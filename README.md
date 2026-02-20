@@ -1,9 +1,21 @@
-# Arab-Spring-Consequences
+# Revolution and Reproduction: How the Arab Spring Reshaped Marriage and Fertility in Egypt
+
+**Authors:** Yeganeh Karbalaei, Firat Demir, and Pallab Ghosh
+
+Department of Economics, University of Oklahoma
+
+---
 
 ## Repository Structure
 
 ```
 Arab-Spring-Consequences/
+│
+├── Draft/
+│   └── Draft1/
+│       └── Feb_2026/                         # Current working draft
+│           ├── Results_Summary.tex           # LaTeX source
+│           └── Results_Summary.pdf           # Compiled PDF (13 pages)
 │
 ├── Data/
 │   ├── source_data/                        # Raw/original data files

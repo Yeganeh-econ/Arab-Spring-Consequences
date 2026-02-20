@@ -81,45 +81,47 @@ Arab-Spring-Consequences/
 │   └── ...
 │
 ├── Results/
+│   ├── summary/                               # Formatted Excel summaries
+│   │   ├── 00_Master_File_Index.xlsx          # Complete file index with descriptions
+│   │   ├── 01_Main_Estimation_Summary.xlsx    # Key treatment effects & full specifications
+│   │   ├── 02_Heterogeneity_Analysis_Summary.xlsx  # All Women vs Teen comparison
+│   │   ├── 03_Mechanism_Analysis_Summary.xlsx # Marriage age mediation analysis
+│   │   └── 04_Robustness_Checks_Summary.xlsx  # Miscarriage probability (placebo test)
+│   │
 │   ├── main_estimation/
-│   │   ├── Pallab_teen_preg_reg_results_all.csv      # (Pallab)
-│   │   ├── Pallab_teen_preg_reg_results_all.xlsx      # (Pallab)
-│   │   ├── Pallab_Age_of_firstbirth_results_all.csv   # (Pallab)
-│   │   ├── Pallab_Age_of_firstmarriage_results_all.csv# (Pallab)
-│   │   ├── Pallab_Occupation_results_all.csv           # (Pallab)
-│   │   ├── Pallab_Schooling_results_all.csv            # (Pallab)
-│   │   ├── AllWomen_PanelA_HasEducation_detailed.csv   # (Yeganeh)
-│   │   ├── AllWomen_PanelA_Working_detailed.csv        # (Yeganeh)
-│   │   ├── AllWomen_PanelB_EducationLevels_detailed.csv# (Yeganeh)
-│   │   ├── AllWomen_PanelB_OccupationType_detailed.csv # (Yeganeh)
-│   │   ├── PanelA_HasEducation_detailed.csv            # (Yeganeh)
-│   │   ├── PanelA_Working_detailed.csv                 # (Yeganeh)
-│   │   ├── PanelB_EducationLevels_detailed.csv         # (Yeganeh)
-│   │   ├── PanelB_OccupationType_detailed.csv          # (Yeganeh)
-│   │   └── ...
+│   │   ├── Pallab/                            # 6 files
+│   │   │   ├── Pallab_teen_preg_reg_results_all.csv / .xlsx
+│   │   │   ├── Pallab_Age_of_firstbirth_results_all.csv
+│   │   │   ├── Pallab_Age_of_firstmarriage_results_all.csv
+│   │   │   ├── Pallab_Occupation_results_all.csv
+│   │   │   └── Pallab_Schooling_results_all.csv
+│   │   └── Yeganeh/                           # 17 files
+│   │       ├── AllWomen_Panel{A-D}_*.csv      # All women panel results (8 files)
+│   │       └── Panel{A-E}_*.csv               # Teen pregnancy panel results (9 files)
 │   │
 │   ├── hetro_analysis/
-│   │   ├── Pallab_Age_of_firstmarriage_results_teen.csv# (Pallab)
-│   │   ├── Pallab_Occupation_results_teen.csv          # (Pallab)
-│   │   ├── Pallab_Schooling_results_teen.csv           # (Pallab)
-│   │   ├── age_group_comparison.csv                    # (Yeganeh)
-│   │   ├── het_urban_rural.csv                         # (Yeganeh)
-│   │   ├── urban.csv / rural.csv                       # (Yeganeh)
-│   │   ├── early_pregnancy.csv / late_pregnancy.csv    # (Yeganeh)
-│   │   ├── wealth_poorest.csv ... wealth_richest.csv   # (Yeganeh)
-│   │   └── ...
+│   │   ├── Pallab/                            # 3 files
+│   │   │   ├── Pallab_Age_of_firstmarriage_results_teen.csv
+│   │   │   ├── Pallab_Occupation_results_teen.csv
+│   │   │   └── Pallab_Schooling_results_teen.csv
+│   │   └── Yeganeh/                           # 21 files
+│   │       ├── age_group_comparison.csv       # Age group heterogeneity
+│   │       ├── urban.csv / rural.csv + related  # Urban/rural (7 files)
+│   │       ├── early/late/very_early_pregnancy.csv  # Pregnancy timing (3 files)
+│   │       └── wealth_poorest...richest.csv   # Wealth quintiles (5 files)
 │   │
 │   ├── mechanism/
-│   │   ├── Pallab_Age_of_firstmarriage_mechanism.csv   # (Pallab)
-│   │   ├── Pallab_teen_preg_mechanism.csv              # (Pallab)
-│   │   ├── contraceptive_categories_grouped.png        # (Yeganeh)
-│   │   ├── contraceptive_trends_by_treatment.png       # (Yeganeh)
-│   │   ├── modern_vs_traditional_did.png               # (Yeganeh)
-│   │   └── ...
+│   │   ├── Pallab/                            # 2 files
+│   │   │   ├── Pallab_teen_preg_mechanism.csv
+│   │   │   └── Pallab_Age_of_firstmarriage_mechanism.csv
+│   │   └── Yeganeh/                           # 6 files
+│   │       ├── contraceptive_*.png            # Contraceptive analysis figures (5)
+│   │       └── modern_vs_traditional_did.png  # Modern vs traditional DiD
 │   │
 │   └── robustness_checks/
-│       ├── Pallab_Miscarriage_prob_results_all.csv     # (Pallab)
-│       └── Pallab_Miscarriage_prob_results_teen.csv    # (Pallab)
+│       └── Pallab/                            # 2 files
+│           ├── Pallab_Miscarriage_prob_results_all.csv
+│           └── Pallab_Miscarriage_prob_results_teen.csv
 │
 └── README.md
 ```

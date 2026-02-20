@@ -164,14 +164,72 @@ Respondent age         & \multicolumn{2}{c}{28.479} & \multicolumn{2}{c}{28.370}
 \end{threeparttable}
 \end{table}
 
+\begin{landscape}
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Difference-in-Differences Summary Statistics}
+\label{tab:did_sumstats}
+\small
+\begin{tabular}{@{}lccccccccl@{}}
+\toprule
+ & \multicolumn{2}{c}{Pre-Period} & & \multicolumn{2}{c}{Post-Period} & & & \\
+\cmidrule(lr){2-3} \cmidrule(lr){5-6}
+ & Control & Treatment & & Control & Treatment & & DiD & \\
+Variable & Mean & Mean & & Mean & Mean & & Estimate & \\
+\midrule
+\multicolumn{9}{@{}l}{\textit{Panel A: Outcome Variables}} \\[2pt]
+Teen pregnancy         & 0.350 & 0.380 & & 0.294 & 0.297 & & $-$0.027$^{**}$ & \\
+                       &       &       & &       &       & & ($-$2.521) & \\[3pt]
+Age at first birth     & 21.260 & 21.168 & & 21.744 & 21.993 & & 0.341$^{***}$ & \\
+                       &       &       & &       &       & & (3.744) & \\[3pt]
+Age at first marriage  & 19.613 & 19.584 & & 20.180 & 20.559 & & 0.408$^{***}$ & \\
+                       &       &       & &       &       & & (4.544) & \\[6pt]
+\multicolumn{9}{@{}l}{\textit{Panel B: Education}} \\[2pt]
+No education           & 0.269 & 0.312 & & 0.160 & 0.152 & & $-$0.050$^{***}$ & \\
+                       &       &       & &       &       & & ($-$5.601) & \\[3pt]
+Primary education      & 0.106 & 0.118 & & 0.079 & 0.081 & & $-$0.010 & \\
+                       &       &       & &       &       & & ($-$1.470) & \\[3pt]
+Secondary education    & 0.521 & 0.450 & & 0.604 & 0.578 & & 0.045$^{***}$ & \\
+                       &       &       & &       &       & & (3.956) & \\[6pt]
+\multicolumn{9}{@{}l}{\textit{Panel C: Respondent and Household Characteristics}} \\[2pt]
+Respondent age         & 28.727 & 28.579 & & 27.920 & 28.202 & & 0.430$^{***}$ & \\
+                       &       &       & &       &       & & (3.286) & \\[3pt]
+Respondent works       & 0.135 & 0.166 & & 0.114 & 0.127 & & $-$0.018$^{**}$ & \\
+                       &       &       & &       &       & & ($-$2.289) & \\[3pt]
+Husband age            & 35.700 & 35.407 & & 34.141 & 34.101 & & 0.253 & \\
+                       &       &       & &       &       & & (1.495) & \\[3pt]
+Husband works          & 0.980 & 0.981 & & 0.989 & 0.989 & & $-$0.001 & \\
+                       &       &       & &       &       & & ($-$0.247) & \\[3pt]
+Husband no education   & 0.164 & 0.191 & & 0.117 & 0.121 & & $-$0.022$^{***}$ & \\
+                       &       &       & &       &       & & ($-$2.847) & \\[3pt]
+Birth order            & 2.655 & 2.625 & & 2.481 & 2.426 & & $-$0.025 & \\
+                       &       &       & &       &       & & ($-$0.712) & \\[3pt]
+Religion (Muslim)      & 0.959 & 0.955 & & 0.964 & 0.968 & & 0.008$^{*}$ & \\
+                       &       &       & &       &       & & (1.810) & \\[6pt]
+\multicolumn{9}{@{}l}{\textit{Panel D: Robustness Outcome}} \\[2pt]
+Terminated birth       & 0.156 & 0.155 & & 0.207 & 0.190 & & $-$0.017$^{*}$ & \\
+                       &       &       & &       &       & & ($-$1.817) & \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Pre-period includes DHS 2005 and 2008 waves; post-period is DHS 2014. Treatment and control groups defined by TC\_noborder. The DiD estimate is the coefficient on the interaction term (Treatment $\times$ Post) from a regression of each variable on treatment, post-period, and their interaction, with robust standard errors. $t$-statistics in parentheses. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\end{landscape}
+
 \noindent Key observations from the summary statistics:
 \begin{itemize}[nosep]
-    \item About 34.3\% of women in the sample experienced teen pregnancy, with an average age at first birth of 21.4 years and first marriage of 19.8 years.
-    \item The treatment and control groups are broadly balanced on observables (Panel B), with similar ages, birth orders, and marriage ages, supporting the validity of the DiD design.
-    \item Teen pregnancy rates decline monotonically across survey waves (Panel C): from 38.8\% in 2005 to 29.6\% in 2014, while age at first marriage increases from 19.3 to 20.3 years.
+    \item About 34.3\% of women in the sample experienced teen pregnancy, with an average age at first birth of 21.4 years and first marriage of 19.8 years (Table~\ref{tab:sumstats}).
+    \item The treatment and control groups are broadly balanced on observables, with similar ages, birth orders, and marriage ages, supporting the validity of the DiD design.
+    \item Teen pregnancy rates decline monotonically across survey waves: from 38.8\% in 2005 to 29.6\% in 2014, while age at first marriage increases from 19.3 to 20.3 years.
     \item Education composition improves over time: the share with no education falls from 33.4\% to 17.1\%, while secondary education rises from 44.8\% to 58.0\%.
     \item The sample is 96\% Muslim, 27.7\% observed in the post-2011 period, and 45.8\% in the treatment group.
 \end{itemize}
+
+Table~\ref{tab:did_sumstats} presents the unconditional difference-in-differences for each variable. Even before controlling for covariates, the raw DiD estimates show statistically significant effects on the key outcomes: teen pregnancy declines by 2.7 percentage points ($t = -2.52$), age at first birth increases by 0.34 years ($t = 3.74$), and age at first marriage increases by 0.41 years ($t = 4.54$). Importantly, several control variables---such as husband age, husband work status, and birth order---show insignificant DiD estimates, suggesting that these characteristics did not differentially change between treatment and control groups around the Arab Spring. The terminated birth outcome also shows only marginal significance ($t = -1.82$), foreshadowing the robustness results in Section~5.
 
 \subsection{Empirical Framework}
 

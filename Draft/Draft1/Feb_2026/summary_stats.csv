@@ -1,0 +1,26 @@
+Variable,N,Mean,Std. Dev.,Min,Max
+teen_preg,40571,0.343,0.475,0,1
+Fir_bir_age,40571,21.406,3.896,8,45
+AgeofFirstMarriage,40571,19.816,3.872,8,44
+UnskilledManual,40571,0.599,1.011,0,5
+SkilledManual,40571,0.945,1.156,0,5
+AgricselfEmployed,40571,3.162,7.104,0,41
+No_education,40571,0.256,0.436,0,1
+Primary,40571,0.104,0.305,0,1
+Secondary,40571,0.513,0.500,0,1
+TC_noborder,38183,0.458,0.498,0,1
+Time_dummy,40571,0.277,0.447,0,1
+Res_age,40571,28.524,5.834,15,49
+Respondent_work,40524,0.142,0.367,0,9
+Husband_age,40571,35.174,7.656,14,95
+Husband_work,40226,0.982,0.131,0,1
+Poorest,40571,0.219,0.414,0,1
+Poorer,40571,0.202,0.401,0,1
+Middle,40571,0.204,0.403,0,1
+Richer,40571,0.193,0.395,0,1
+Husband_no_education,40571,0.160,0.367,0,1
+Husband_primary,40571,0.155,0.362,0,1
+Husband_secondary,40571,0.533,0.499,0,1
+Birth_order_number,40571,2.602,1.699,1,19
+Religion,40539,0.960,0.196,0,1
+Terminated_birth,38574,0.166,0.372,0,1

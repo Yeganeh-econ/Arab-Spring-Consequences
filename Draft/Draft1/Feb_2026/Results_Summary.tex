@@ -51,9 +51,133 @@
 % ============================================================
 \section{Introduction and Empirical Strategy}
 
-This document summarizes the empirical results from our analysis of how the Arab Spring affected women's outcomes in Egypt. We use three rounds of the Egypt Demographic and Health Survey (DHS): 2005, 2008, and 2014, providing a combined sample of approximately 38,000 women.
+\subsection{Trends in Teen Pregnancy}
 
-Our identification strategy relies on a difference-in-differences (DiD) framework that exploits variation in the intensity of Arab Spring exposure across Egyptian governorates. The key treatment variables are:
+Before presenting the estimation results, Figure~\ref{fig:trends} shows the trends in teen pregnancy rates for the treatment and control groups over the study period. The dashed vertical line marks the onset of the Arab Spring in 2011.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{teen_preg_trends.png}
+    \caption*{(a) Raw trends}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{teen_preg_trends_smooth.png}
+    \caption*{(b) Smoothed trends}
+\end{minipage}
+\caption{Teen Pregnancy Rates by Treatment and Control Groups, 2006--2014}
+\label{fig:trends}
+\end{figure}
+
+\noindent Several features of Figure~\ref{fig:trends} are worth noting. First, the pre-2011 trends in teen pregnancy are broadly parallel between the treatment and control groups, supporting the key identifying assumption of the DiD design. Second, after the Arab Spring (2011), the treatment group experiences a steeper decline in teen pregnancy rates relative to the control group, consistent with a causal effect of the uprising. The smoothed trends in panel (b) make this divergence particularly clear.
+
+\subsection{Summary Statistics}
+
+Table~\ref{tab:sumstats} presents summary statistics for the key variables used in the analysis. Panel~A reports the full sample, Panel~B compares treatment and control groups, and Panel~C shows means by survey year.
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Summary Statistics}
+\label{tab:sumstats}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\multicolumn{6}{@{}l}{\textit{Panel A: Full Sample}} \\[2pt]
+Variable & $N$ & Mean & Std.\ Dev. & Min & Max \\
+\midrule
+Teen pregnancy           & 40,571 & 0.343 & 0.475 & 0 & 1 \\
+Age at first birth       & 40,571 & 21.406 & 3.896 & 8 & 45 \\
+Age at first marriage    & 40,571 & 19.816 & 3.872 & 8 & 44 \\
+No education             & 40,571 & 0.256 & 0.436 & 0 & 1 \\
+Primary education        & 40,571 & 0.104 & 0.305 & 0 & 1 \\
+Secondary education      & 40,571 & 0.513 & 0.500 & 0 & 1 \\
+Respondent age           & 40,571 & 28.524 & 5.834 & 15 & 49 \\
+Respondent works         & 40,524 & 0.142 & 0.367 & 0 & 9 \\
+Husband age              & 40,571 & 35.174 & 7.656 & 14 & 95 \\
+Husband works            & 40,226 & 0.982 & 0.131 & 0 & 1 \\
+Husband no education     & 40,571 & 0.160 & 0.367 & 0 & 1 \\
+Husband primary          & 40,571 & 0.155 & 0.362 & 0 & 1 \\
+Husband secondary        & 40,571 & 0.533 & 0.499 & 0 & 1 \\
+Poorest                  & 40,571 & 0.219 & 0.414 & 0 & 1 \\
+Poorer                   & 40,571 & 0.202 & 0.401 & 0 & 1 \\
+Middle                   & 40,571 & 0.204 & 0.403 & 0 & 1 \\
+Richer                   & 40,571 & 0.193 & 0.395 & 0 & 1 \\
+Birth order              & 40,571 & 2.602 & 1.699 & 1 & 19 \\
+Religion (Muslim)        & 40,539 & 0.960 & 0.196 & 0 & 1 \\
+Terminated birth         & 38,574 & 0.166 & 0.372 & 0 & 1 \\
+TC\_noborder             & 38,183 & 0.458 & 0.498 & 0 & 1 \\
+Post-2011 (Time dummy)   & 40,571 & 0.277 & 0.447 & 0 & 1 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Data from Egypt DHS 2005, 2008, and 2014. Teen pregnancy is defined as first birth before age 20. Wealth quintile reference category is Richest. Education reference is post-secondary.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Summary Statistics by Treatment/Control Group and Survey Year}
+\label{tab:sumstats_groups}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\multicolumn{7}{@{}l}{\textit{Panel B: By Treatment and Control Group}} \\[2pt]
+ & \multicolumn{3}{c}{Treatment ($N = 17{,}489$)} & \multicolumn{3}{c}{Control ($N = 20{,}694$)} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Variable & Mean & SD & & Mean & SD & \\
+\midrule
+Teen pregnancy         & 0.358 & 0.479 & & 0.334 & 0.472 & \\
+Age at first birth     & 21.383 & 4.016 & & 21.398 & 3.785 & \\
+Age at first marriage  & 19.838 & 4.000 & & 19.775 & 3.753 & \\
+No education           & 0.270 & 0.444 & & 0.238 & 0.426 & \\
+Primary education      & 0.108 & 0.310 & & 0.098 & 0.298 & \\
+Secondary education    & 0.484 & 0.500 & & 0.545 & 0.498 & \\
+Respondent age         & 28.481 & 5.874 & & 28.497 & 5.789 & \\
+Respondent works       & 0.156 & 0.363 & & 0.129 & 0.361 & \\
+Birth order            & 2.573 & 1.687 & & 2.606 & 1.696 & \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Panel C: By Survey Year}} \\[2pt]
+ & \multicolumn{2}{c}{2005 ($N = 13{,}851$)} & \multicolumn{2}{c}{2008 ($N = 10{,}872$)} & \multicolumn{2}{c}{2014 ($N = 15{,}848$)} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+Variable & \multicolumn{2}{c}{Mean} & \multicolumn{2}{c}{Mean} & \multicolumn{2}{c}{Mean} \\
+\midrule
+Teen pregnancy         & \multicolumn{2}{c}{0.388} & \multicolumn{2}{c}{0.355} & \multicolumn{2}{c}{0.296} \\
+Age at first birth     & \multicolumn{2}{c}{20.996} & \multicolumn{2}{c}{21.345} & \multicolumn{2}{c}{21.806} \\
+Age at first marriage  & \multicolumn{2}{c}{19.340} & \multicolumn{2}{c}{19.734} & \multicolumn{2}{c}{20.288} \\
+No education           & \multicolumn{2}{c}{0.334} & \multicolumn{2}{c}{0.279} & \multicolumn{2}{c}{0.171} \\
+Primary education      & \multicolumn{2}{c}{0.126} & \multicolumn{2}{c}{0.102} & \multicolumn{2}{c}{0.085} \\
+Secondary education    & \multicolumn{2}{c}{0.448} & \multicolumn{2}{c}{0.499} & \multicolumn{2}{c}{0.580} \\
+Respondent age         & \multicolumn{2}{c}{28.479} & \multicolumn{2}{c}{28.370} & \multicolumn{2}{c}{28.668} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Treatment group defined by TC\_noborder $= 1$. Panel C reports unconditional means by DHS survey wave.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent Key observations from the summary statistics:
+\begin{itemize}[nosep]
+    \item About 34.3\% of women in the sample experienced teen pregnancy, with an average age at first birth of 21.4 years and first marriage of 19.8 years.
+    \item The treatment and control groups are broadly balanced on observables (Panel B), with similar ages, birth orders, and marriage ages, supporting the validity of the DiD design.
+    \item Teen pregnancy rates decline monotonically across survey waves (Panel C): from 38.8\% in 2005 to 29.6\% in 2014, while age at first marriage increases from 19.3 to 20.3 years.
+    \item Education composition improves over time: the share with no education falls from 33.4\% to 17.1\%, while secondary education rises from 44.8\% to 58.0\%.
+    \item The sample is 96\% Muslim, 27.7\% observed in the post-2011 period, and 45.8\% in the treatment group.
+\end{itemize}
+
+\subsection{Empirical Framework}
+
+This document summarizes the empirical results from our analysis of how the Arab Spring affected women's outcomes in Egypt. We use three rounds of the Egypt Demographic and Health Survey (DHS): 2005, 2008, and 2014, providing a combined sample of approximately 40,500 women (see Table~\ref{tab:sumstats}).
+
+Our identification strategy relies on a difference-in-differences (DiD) framework that exploits variation in the intensity of Arab Spring exposure across Egyptian governorates. As shown in Figure~\ref{fig:trends}, the pre-treatment trends in teen pregnancy are broadly parallel, supporting the identifying assumption. The key treatment variables are:
 
 \begin{itemize}[nosep]
     \item \textbf{past\_group}: A measure of exposure to the Arab Spring, capturing whether women in a given governorate experienced the uprising during a critical period.

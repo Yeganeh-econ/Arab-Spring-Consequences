@@ -1,0 +1,15 @@
+* Channel checking - doctoriting 
+* The following is the doctor visiting rate check. Any times of doctor visiting during pregency is 1. The times of doctor visiting during pregency is 0 if women did not visit when they are pregency.
+* The following code only gives the 100% horizontal line.
+* Therefore, it is NOT a good checking. The following method also indicates that all pregenct women visit doctors
+
+use "cr_master_UR.dta", clear	
+		drop if  dr_visit_rate01==.
+		*replace dr_visit=log(dr_visit)
+		collapse (mean) dr_visit_rate01, by(tgover_ur year)
+		
+		twoway (line dr_visit_rate01 year if tgover_ur==0, xline(2011 2012 2013, lp(dash))  lcolor(black) mcolor(black)) (connected dr_visit_rate01 year if tgover_ur==0, msymbol(X)  lcolor(black) mcolor(black)) ///
+		(line dr_visit_rate01 year if tgover_ur==1, xline(2011 2012 2013, lp(dash)) lcolor(blue)  mcolor(blue)) (connected dr_visit_rate01 year if tgover_ur==1, msymbol(d) lcolor(blue)  mcolor(blue) lp(dash)) ///
+		, graphregion(color(white)) legend(order (2 4) label(2 "control areas") label(4 "treatment areas")) xtitle(Year) ytitle(Doctor Visiting During Pregnancy)
+		graph export "Figure6_Influencial Channels_DrV.pdf", replace
+

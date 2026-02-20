@@ -1,0 +1,21 @@
+potential variables:
+1. Health and Breastfeeding
+2. Child's Health and Vaccinations
+3. Child's Height and Weight
+4. Domestic Violence
+5. Country specific Height and weight variables
+6. Country specific Health and Vaccination variables
+
+s605a_1/s605a_2/s605a_3/...:  has birth certificate where vaccinations are written down.
+
+(2) birth weight (done)
+p63 M19 or M19A
+
+
+05/16/2023 Wednesday check 20 minutes and then email Dr. Demir and Dr.Ghosh
+(1) How often they visit to local health center especially during the pregnancy period 
+(3) Domestic violence during pregnancy. 
+
+
+p61, vaccination during pregnancy.
+p63, m14  

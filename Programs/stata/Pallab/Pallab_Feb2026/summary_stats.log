@@ -1,0 +1,258 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       SE—Standard Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Unlimited-user network, expiring  9 May 2026
+Serial number: 401909305345
+  Licensed to: Ghosh, Pallab K.
+               University of Oklahoma
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do summary_stats.do 
+
+. /*===========================================================================
+> ===
+>   Summary Statistics for:
+>   "Revolution and Reproduction: How the Arab Spring Reshaped Marriage
+>    and Fertility in Egypt"
+> 
+>   Authors: Karbalaei, Demir, Ghosh
+>   Date: February 2026
+> =============================================================================
+> =*/
+. 
+. clear all
+
+. set more off
+
+. 
+. * Load data
+. use "/Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Data/model
+> _data/Combined_DHS_2005_2008_2014.dta", clear
+
+. 
+. * Define output path
+. local outpath "/Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/
+> Draft/Draft1/Feb_2026"
+
+. 
+. *============================================================================
+> ===
+. * Generate key variables needed
+. *============================================================================
+> ===
+. 
+. * Teen pregnancy indicator (first birth age < 20)
+. gen teen_preg = (Fir_bir_age < 20 & Fir_bir_age != .)
+
+. 
+. * Destring TC_noborder if string
+. capture destring TC_noborder, replace
+
+. 
+. * Generate past_group indicator based on treatment status
+. * (use the variable if it exists, otherwise use Time_dummy and TC)
+. capture confirm variable past_group
+
+. if _rc != 0 {
+.     gen past_group = (Time_dummy == 1)
+. }
+
+. 
+. *============================================================================
+> ===
+. * PANEL A: Summary Statistics - Key Variables (Full Sample)
+. *============================================================================
+> ===
+. 
+. * Output summary statistics to a CSV for LaTeX
+. tempname fh
+
+. file open `fh' using "`outpath'/summary_stats.csv", write replace
+(file
+    /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Draft/Draft
+    > 1/Feb_2026/summary_stats.csv not found)
+
+. 
+. * Header
+. file write `fh' "Variable,N,Mean,Std. Dev.,Min,Max" _n
+
+. 
+. * Loop through key outcome variables
+. foreach var in teen_preg Fir_bir_age AgeofFirstMarriage {
+  2.     quietly summarize `var'
+  3.     local n = r(N)
+  4.     local mean = string(r(mean), "%9.3f")
+  5.     local sd = string(r(sd), "%9.3f")
+  6.     local min = string(r(min), "%9.0f")
+  7.     local max = string(r(max), "%9.0f")
+  8.     file write `fh' "`var',`n',`mean',`sd',`min',`max'" _n
+  9. }
+
+. 
+. * Occupation variables
+. foreach var in UnskilledManual SkilledManual AgricselfEmployed {
+  2.     quietly summarize `var'
+  3.     local n = r(N)
+  4.     local mean = string(r(mean), "%9.3f")
+  5.     local sd = string(r(sd), "%9.3f")
+  6.     local min = string(r(min), "%9.0f")
+  7.     local max = string(r(max), "%9.0f")
+  8.     file write `fh' "`var',`n',`mean',`sd',`min',`max'" _n
+  9. }
+
+. 
+. * Education variables
+. foreach var in No_education Primary Secondary {
+  2.     quietly summarize `var'
+  3.     local n = r(N)
+  4.     local mean = string(r(mean), "%9.3f")
+  5.     local sd = string(r(sd), "%9.3f")
+  6.     local min = string(r(min), "%9.0f")
+  7.     local max = string(r(max), "%9.0f")
+  8.     file write `fh' "`var',`n',`mean',`sd',`min',`max'" _n
+  9. }
+
+. 
+. * Treatment variables
+. foreach var in TC_noborder Time_dummy {
+  2.     capture quietly summarize `var'
+  3.     if _rc == 0 {
+  4.         local n = r(N)
+  5.         local mean = string(r(mean), "%9.3f")
+  6.         local sd = string(r(sd), "%9.3f")
+  7.         local min = string(r(min), "%9.0f")
+  8.         local max = string(r(max), "%9.0f")
+  9.         file write `fh' "`var',`n',`mean',`sd',`min',`max'" _n
+ 10.     }
+ 11. }
+
+. 
+. * Control variables
+. foreach var in Res_age Respondent_work Husband_age Husband_work ///
+>     Poorest Poorer Middle Richer ///
+>     Husband_no_education Husband_primary Husband_secondary ///
+>     Birth_order_number Religion ///
+>     Terminated_birth {
+  2.     capture quietly summarize `var'
+  3.     if _rc == 0 {
+  4.         local n = r(N)
+  5.         local mean = string(r(mean), "%9.3f")
+  6.         local sd = string(r(sd), "%9.3f")
+  7.         local min = string(r(min), "%9.0f")
+  8.         local max = string(r(max), "%9.0f")
+  9.         file write `fh' "`var',`n',`mean',`sd',`min',`max'" _n
+ 10.     }
+ 11. }
+
+. 
+. file close `fh'
+
+. 
+. *============================================================================
+> ===
+. * PANEL B: Summary Statistics by Treatment/Control Group
+. *============================================================================
+> ===
+. 
+. tempname fh2
+
+. file open `fh2' using "`outpath'/summary_stats_by_group.csv", write replace
+(file
+    /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Draft/Draft
+    > 1/Feb_2026/summary_stats_by_group.csv not found)
+
+. 
+. file write `fh2' "Variable,Treatment N,Treatment Mean,Treatment SD,Control N,
+> Control Mean,Control SD" _n
+
+. 
+. foreach var in teen_preg Fir_bir_age AgeofFirstMarriage ///
+>     UnskilledManual SkilledManual AgricselfEmployed ///
+>     No_education Primary Secondary ///
+>     Res_age Respondent_work Birth_order_number {
+  2. 
+.     capture {
+  3.         quietly summarize `var' if TC_noborder == 1
+  4.         local tn = r(N)
+  5.         local tmean = string(r(mean), "%9.3f")
+  6.         local tsd = string(r(sd), "%9.3f")
+  7. 
+.         quietly summarize `var' if TC_noborder == 0
+  8.         local cn = r(N)
+  9.         local cmean = string(r(mean), "%9.3f")
+ 10.         local csd = string(r(sd), "%9.3f")
+ 11. 
+.         file write `fh2' "`var',`tn',`tmean',`tsd',`cn',`cmean',`csd'" _n
+ 12.     }
+ 13. }
+
+. 
+. file close `fh2'
+
+. 
+. *============================================================================
+> ===
+. * PANEL C: Summary by Survey Year
+. *============================================================================
+> ===
+. 
+. tempname fh3
+
+. file open `fh3' using "`outpath'/summary_stats_by_year.csv", write replace
+(file
+    /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Draft/Draft
+    > 1/Feb_2026/summary_stats_by_year.csv not found)
+
+. 
+. file write `fh3' "Variable,2005 N,2005 Mean,2008 N,2008 Mean,2014 N,2014 Mean
+> " _n
+
+. 
+. foreach var in teen_preg Fir_bir_age AgeofFirstMarriage ///
+>     UnskilledManual SkilledManual ///
+>     No_education Primary Secondary Res_age {
+  2. 
+.     capture {
+  3.         quietly summarize `var' if Sample_year == 2005
+  4.         local n05 = r(N)
+  5.         local m05 = string(r(mean), "%9.3f")
+  6. 
+.         quietly summarize `var' if Sample_year == 2008
+  7.         local n08 = r(N)
+  8.         local m08 = string(r(mean), "%9.3f")
+  9. 
+.         quietly summarize `var' if Sample_year == 2014
+ 10.         local n14 = r(N)
+ 11.         local m14 = string(r(mean), "%9.3f")
+ 12. 
+.         file write `fh3' "`var',`n05',`m05',`n08',`m08',`n14',`m14'" _n
+ 13.     }
+ 14. }
+
+. 
+. file close `fh3'
+
+. 
+. display "Summary statistics exported successfully."
+Summary statistics exported successfully.
+
+. display "Files saved in: `outpath'"
+Files saved in: /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/D
+> raft/Draft1/Feb_2026
+
+. 
+end of do-file

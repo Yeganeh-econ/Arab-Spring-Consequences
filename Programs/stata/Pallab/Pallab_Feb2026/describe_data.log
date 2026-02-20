@@ -1,0 +1,193 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       SE—Standard Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Unlimited-user network, expiring  9 May 2026
+Serial number: 401909305345
+  Licensed to: Ghosh, Pallab K.
+               University of Oklahoma
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do describe_data.do 
+
+. clear all
+
+. set more off
+
+. use "/Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Data/model
+> _data/Combined_DHS_2005_2008_2014.dta", clear
+
+. describe
+
+Contains data from /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequence
+> s/Data/model_data/Combined_DHS_2005_2008_2014.dta
+ Observations:        40,571                  
+    Variables:           145                  27 Nov 2024 11:28
+-------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+caseid          str15   %15s                  caseid
+B_order         byte    %10.0g                B_order
+Country_code    str3    %9s                   Country_code
+Cluster_ID      long    %10.0g                Cluster_ID
+HH_ID           int     %10.0g                HH_ID
+Res_line_number byte    %10.0g                Res_line_number
+Area_unit       int     %10.0g                Area_unit
+Women_sample_~t long    %10.0g                Women_sample_weight
+Sample_year     int     %10.0g                Sample_year
+Res_BY          int     %10.0g                Res_BY
+Res_age         byte    %10.0g                Res_age
+Res_age_group   byte    %10.0g                Res_age_group
+Urban_rural     byte    %10.0g                Urban_rural
+Res_edu         byte    %10.0g                Res_edu
+Hus_edu         byte    %10.0g                Hus_edu
+Husbandoccupa~n byte    %10.0g                Husband occupation
+Religion        byte    %10.0g                Religion
+Edu_yrs         byte    %10.0g                Edu_yrs
+Res_vis         byte    %10.0g                Res_vis
+HHM_num         byte    %10.0g                HHM_num
+Chi_num         byte    %10.0g                Chi_num
+Wom_num         byte    %10.0g                Wom_num
+HHH_gender      byte    %10.0g                HHH_gender
+HHH_age         byte    %10.0g                HHH_age
+Weight_all_wom  int     %10.0g                Weight_all_wom
+Wealth_ind      byte    %10.0g                Wealth_ind
+Ever_child      byte    %10.0g                Ever_child
+Bir_last5yrs    byte    %10.0g                Bir_last5yrs
+Fir_bir_age     byte    %10.0g                Fir_bir_age
+Living_chi_num  byte    %10.0g                Living_chi_num
+Bir_hist        byte    %10.0g                Bir_hist
+Tet_inj_num     byte    %10.0g                Tet_inj_num
+Pre_doc         byte    %10.0g                Pre_doc
+Pre_nur         byte    %10.0g                Pre_nur
+Doc_assis_bir   byte    %10.0g                Doc_assis_bir
+Nur_assis_bir   byte    %10.0g                Nur_assis_bir
+Mon_breastfee~g byte    %10.0g                Mon_breastfeeding
+Antena_visiting byte    %10.0g                Antena_visiting
+Bir_place       byte    %10.0g                Bir_place
+Bir_size        byte    %10.0g                Bir_size
+Bir_weight      int     %10.0g                Bir_weight
+Wei_resource    byte    %10.0g                Wei_resource
+Polio0_vac      byte    %10.0g                Polio0_vac
+Bcg_vac         byte    %10.0g                Bcg_vac
+DPT1_vac        byte    %10.0g                DPT1_vac
+Polio1_vac      byte    %10.0g                Polio1_vac
+DPT2_vac        byte    %10.0g                DPT2_vac
+Polio2_vac      byte    %10.0g                Polio2_vac
+DPT3_vac        byte    %10.0g                DPT3_vac
+Polio3_vac      byte    %10.0g                Polio3_vac
+Measles_vac     byte    %10.0g                Measles_vac
+Chil_age_m      byte    %10.0g                Chil_age_m
+Chil_height     int     %10.0g                Chil_height
+Heig_age_perc   int     %10.0g                Heig_age_perc
+Birth_order_n~r byte    %10.0g                Birth_order_number
+Birth_column_~r byte    %10.0g                Birth_column_number
+Child_is_twin   byte    %10.0g                Child_is_twin
+Month_of_birth  byte    %10.0g                Month_of_birth
+Year_of_birth   int     %10.0g                Year_of_birth
+Date_of_birth~C int     %10.0g                Date_of_birth_CMC
+Sex_of_child    byte    %10.0g                Sex_of_child
+Child_is_alive  byte    %10.0g                Child_is_alive
+Age_at_death    int     %10.0g                Age_at_death
+Age_at_death_~d byte    %10.0g                Age_at_death_months_imputed
+Current_age_o~d byte    %10.0g                Current_age_of_child
+Preceding_bir~s int     %10.0g                Preceding_birth_interval_months
+Succeeding_bi~s byte    %10.0g                Succeeding_birth_interval_months
+Terminated_bi~h byte    %10.0g                Terminated_birth
+Month_termina~h byte    %10.0g                Month_terminated_birth
+Year_terminat~h int     %10.0g                Year_terminated_birth
+AgeofFirstMar~e byte    %10.0g                Age of First Marriage
+Respondent_work byte    %10.0g                Respondent_work
+Respondentoc~il int     %10.0g                Respondent occupation detail
+Husband_age     byte    %10.0g                Husband_age
+Respondentoc~al byte    %10.0g                Respondent occupation general
+CK_aft_del      int     %10.0g                CK_aft_del
+Governates      byte    %10.0g                Governates
+TC_noborder     str1    %9s                   TC_noborder
+TC_border       str1    %9s                   TC_border
+TC_OM_noborder  str1    %9s                   TC_OM_noborder
+Kids_birthYM    str7    %9s                   Kids_birthYM
+Phases          str1    %9s                   Phases
+Phases_labels   str9    %9s                   Phases_labels
+Kids_DY         str4    %9s                   Kids_DY
+Ave_Mon_breas~g double  %10.0g                Ave_Mon_breastfeeding
+Urban_rural_l~l str5    %9s                   Urban_rural_label
+Religion_label  str9    %9s                   Religion_label
+HHH_gender_la~l str6    %9s                   HHH_gender_label
+Sex_of_child_~l str6    %9s                   Sex_of_child_label
+Teen_mom_rate   double  %10.0g                Teen_mom_rate
+Son_Preferenc~e double  %10.0g                Son_Preference_rate
+Son_Preferenc~w double  %10.0g                Son_Preference_rate_new
+Time_dummy      byte    %10.0g                Time_dummy
+Res_edu_label   str12   %12s                  Res_edu_label
+weight          double  %10.0g                weight
+Husband_work    byte    %10.0g                Husband_work
+Poorest         byte    %10.0g                Poorest
+Poorer          byte    %10.0g                Poorer
+Middle          byte    %10.0g                Middle
+Richer          byte    %10.0g                Richer
+No_education    byte    %10.0g                No_education
+Primary         byte    %10.0g                Primary
+Secondary       byte    %10.0g                Secondary
+Husband_no_ed~n byte    %10.0g                Husband_no_education
+Husband_primary byte    %10.0g                Husband_primary
+Husband_secon~y byte    %10.0g                Husband_secondary
+Respondentocc~a str19   %19s                  Respondent occupation
+                                                general_label
+NotWorking      int     %10.0g                Not Working
+ProfTechManag   byte    %10.0g                Prof Tech Manag
+Clerical        byte    %10.0g                Clerical
+Sales           byte    %10.0g                Sales
+AgricselfEmpl~d byte    %10.0g                Agric-self Employed
+AgricEmployee   byte    %10.0g                Agric-Employee
+Services        byte    %10.0g                Services
+SkilledManual   byte    %10.0g                Skilled Manual
+UnskilledManual byte    %10.0g                Unskilled Manual
+OccupationDen~r int     %10.0g                Occupation Denominator
+NotWorkingRate  double  %10.0g                Not Working Rate
+ProfTechManag~e double  %10.0g                Prof Tech Manag Rate
+ClericalRate    double  %10.0g                Clerical Rate
+SalesRate       double  %10.0g                Sales Rate
+AgricSelfEmpl~e double  %10.0g                Agric-Self Employed Rate
+AgricEmployee~e double  %10.0g                Agric-Employee Rate
+ServicesRate    double  %10.0g                Services Rate
+SkilledManual~e double  %10.0g                Skilled Manual Rate
+UnskilledManu~e double  %10.0g                Unskilled Manual Rate
+Res_Edu_denom~r int     %10.0g                Res_Edu_denominator
+Res_Edu_primary byte    %10.0g                Res_Edu_primary
+Res_Edu_secon~y int     %10.0g                Res_Edu_secondary
+Res_Edu_higher  byte    %10.0g                Res_Edu_higher
+WomenPrimaryS~e double  %10.0g                Women Primary School Rate
+WomenSecondar~e double  %10.0g                Women Secondary School Rate
+WomenHigherSc~e double  %10.0g                Women Higher School Rate
+Terminate~nator int     %10.0g                Terminated_birth_denominator
+Terminate~rator byte    %10.0g                Terminated_birth_numerator
+Terminated_bi~e double  %10.0g                Terminated_birth_rate
+Infant_deaths~r byte    %10.0g                Infant_deaths_eachyear
+Infant_lives_~r int     %10.0g                Infant_lives_eachyear
+Infant_deathr~r double  %10.0g                Infant_deathrate_eachyear
+Boy~hs_eachyear byte    %10.0g                Boys_infant_deaths_eachyear
+Boys_infant_l~r int     %10.0g                Boys_infant_lives_eachyear
+Boys~e_eachyear double  %10.0g                Boys_infant_deathrate_eachyear
+Gir~hs_eachyear byte    %10.0g                Girls_infant_deaths_eachyear
+Gir~es_eachyear int     %10.0g                Girls_infant_lives_eachyear
+Girl~e_eachyear double  %10.0g                Girls_infant_deathrate_eachyear
+-------------------------------------------------------------------------------
+Sorted by: 
+
+. 
+end of do-file

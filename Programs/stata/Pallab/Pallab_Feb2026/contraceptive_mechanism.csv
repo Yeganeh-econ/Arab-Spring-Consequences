@@ -1,0 +1,5 @@
+Variable,Any_coef,Any_se,Modern_coef,Modern_se,Traditional_coef,Traditional_se,Pill_coef,Pill_se,IUD_coef,IUD_se,Injection_coef,Injection_se
+past_group,0.012,0.016,-0.005,0.016,0.000,0.002,0.006,0.012,0.016,0.016,-0.018,0.005
+TC_noborder,0.026,0.014,0.022,0.015,-0.002,0.002,-0.010,0.009,0.008,0.014,0.019,0.006
+Observations,37779,,37779,,37779,,37779,,37779,,37779,
+Adj_R2,0.099,,0.108,,0.043,,0.065,,0.095,,0.097,

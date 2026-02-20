@@ -1,0 +1,164 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       SE—Standard Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Unlimited-user network, expiring  9 May 2026
+Serial number: 401909305345
+  Licensed to: Ghosh, Pallab K.
+               University of Oklahoma
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do summary_stats_did.do 
+
+. /*===========================================================================
+> ===
+>   Difference-in-Differences Summary Statistics Table
+> 
+>   "Revolution and Reproduction: How the Arab Spring Reshaped Marriage
+>    and Fertility in Egypt"
+> 
+>   Authors: Karbalaei, Demir, Ghosh
+>   Date: February 2026
+> 
+>   Structure: Pre/Post means for Treatment/Control + DiD with t-stats
+> =============================================================================
+> =*/
+. 
+. clear all
+
+. set more off
+
+. 
+. * Load data
+. use "/Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Data/model
+> _data/Combined_DHS_2005_2008_2014.dta", clear
+
+. 
+. local outpath "/Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/
+> Draft/Draft1/Feb_2026"
+
+. 
+. *============================================================================
+> ===
+. * Generate variables
+. *============================================================================
+> ===
+. 
+. * Teen pregnancy indicator
+. gen teen_preg = (Fir_bir_age < 20 & Fir_bir_age != .)
+
+. 
+. * Destring TC_noborder
+. capture destring TC_noborder, replace
+
+. 
+. * Keep only observations with valid treatment assignment
+. keep if TC_noborder != .
+(2,388 observations deleted)
+
+. 
+. *============================================================================
+> ===
+. * DiD Summary Statistics
+. *============================================================================
+> ===
+. 
+. tempname fh
+
+. file open `fh' using "`outpath'/summary_stats_did.csv", write replace
+(file
+    /Users/pallab.ghosh/Documents/GitHub/Arab-Spring-Consequences/Draft/Draft
+    > 1/Feb_2026/summary_stats_did.csv not found)
+
+. 
+. file write `fh' "Variable,Pre_Control_Mean,Pre_Control_SD,Pre_Treat_Mean,Pre_
+> Treat_SD,Post_Control_Mean,Post_Control_SD,Post_Treat_Mean,Post_Treat_SD,DiD,
+> DiD_tstat" _n
+
+. 
+. foreach var in teen_preg Fir_bir_age AgeofFirstMarriage ///
+>     No_education Primary Secondary ///
+>     Res_age Respondent_work Husband_age Husband_work ///
+>     Husband_no_education Husband_primary Husband_secondary ///
+>     Poorest Poorer Middle Richer ///
+>     Birth_order_number Religion Terminated_birth {
+  2. 
+.     capture {
+  3.         * Pre-period, Control group (Time_dummy==0, TC_noborder==0)
+.         quietly summarize `var' if Time_dummy == 0 & TC_noborder == 0
+  4.         local pre_c_n = r(N)
+  5.         local pre_c_mean = r(mean)
+  6.         local pre_c_sd = r(sd)
+  7.         local pre_c_mean_s = string(r(mean), "%9.3f")
+  8.         local pre_c_sd_s = string(r(sd), "%9.3f")
+  9. 
+.         * Pre-period, Treatment group (Time_dummy==0, TC_noborder==1)
+.         quietly summarize `var' if Time_dummy == 0 & TC_noborder == 1
+ 10.         local pre_t_n = r(N)
+ 11.         local pre_t_mean = r(mean)
+ 12.         local pre_t_sd = r(sd)
+ 13.         local pre_t_mean_s = string(r(mean), "%9.3f")
+ 14.         local pre_t_sd_s = string(r(sd), "%9.3f")
+ 15. 
+.         * Post-period, Control group (Time_dummy==1, TC_noborder==0)
+.         quietly summarize `var' if Time_dummy == 1 & TC_noborder == 0
+ 16.         local post_c_n = r(N)
+ 17.         local post_c_mean = r(mean)
+ 18.         local post_c_sd = r(sd)
+ 19.         local post_c_mean_s = string(r(mean), "%9.3f")
+ 20.         local post_c_sd_s = string(r(sd), "%9.3f")
+ 21. 
+.         * Post-period, Treatment group (Time_dummy==1, TC_noborder==1)
+.         quietly summarize `var' if Time_dummy == 1 & TC_noborder == 1
+ 22.         local post_t_n = r(N)
+ 23.         local post_t_mean = r(mean)
+ 24.         local post_t_sd = r(sd)
+ 25.         local post_t_mean_s = string(r(mean), "%9.3f")
+ 26.         local post_t_sd_s = string(r(sd), "%9.3f")
+ 27. 
+.         * Compute DiD = (Post_T - Pre_T) - (Post_C - Pre_C)
+.         local did = (`post_t_mean' - `pre_t_mean') - (`post_c_mean' - `pre_c_
+> mean')
+ 28.         local did_s = string(`did', "%9.3f")
+ 29. 
+.         * Compute t-stat for DiD using regression:
+.         * Regress var on TC_noborder, Time_dummy, TC_noborder*Time_dummy
+.         * The interaction coefficient is the DiD, and its t-stat is what we n
+> eed
+.         gen _interaction = TC_noborder * Time_dummy
+ 30.         quietly reg `var' TC_noborder Time_dummy _interaction, robust
+ 31.         local did_coef = _b[_interaction]
+ 32.         local did_se = _se[_interaction]
+ 33.         local did_t = `did_coef' / `did_se'
+ 34.         local did_t_s = string(`did_t', "%9.3f")
+ 35.         local did_coef_s = string(`did_coef', "%9.3f")
+ 36.         drop _interaction
+ 37. 
+.         file write `fh' "`var',`pre_c_mean_s',`pre_c_sd_s',`pre_t_mean_s',`pr
+> e_t_sd_s',`post_c_mean_s',`post_c_sd_s',`post_t_mean_s',`post_t_sd_s',`did_co
+> ef_s',`did_t_s'" _n
+ 38.     }
+ 39. }
+
+. 
+. file close `fh'
+
+. 
+. display "DiD summary statistics exported successfully."
+DiD summary statistics exported successfully.
+
+. 
+end of do-file

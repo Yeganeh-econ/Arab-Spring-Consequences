@@ -37,9 +37,9 @@
 \maketitle
 
 \begin{abstract}
-\noindent This document presents a comprehensive summary of the empirical results from our analysis of the Arab Spring's consequences on women's outcomes in Egypt. Using data from the Egypt Demographic and Health Surveys (DHS 2005, 2008, 2014), we employ a difference-in-differences (DiD) strategy exploiting geographic variation in exposure to the 2011 uprising. Our key findings indicate that Arab Spring exposure significantly reduced teen pregnancy rates, increased age at first birth and first marriage, and shifted occupational composition away from unskilled manual labor. We present main estimation results, heterogeneity analysis across age groups and geographic areas, mechanism analysis through marriage timing, and robustness checks using miscarriage probability as a placebo outcome. \\[6pt]
+\noindent We examine the consequences of the Arab Spring on women's reproductive and labor market outcomes in Egypt. We draw on three rounds of the Egypt Demographic and Health Survey (DHS 2005, 2008, 2014) and employ a difference in differences strategy that exploits geographic variation in exposure to the 2011 uprising. We find that Arab Spring exposure significantly reduced teen pregnancy rates, raised the age at first birth and first marriage, and shifted occupational composition away from unskilled manual labor. We trace these effects to two primary mechanisms---delayed marriage and a narrowing of the spousal age gap---while ruling out changes in education, partner selection, and labor force participation as operative channels. We subject our estimates to a battery of robustness checks, including a miscarriage placebo test and logit specifications. \\[6pt]
 \noindent \textit{JEL Classification}: J13, J16, O15, I15 \\
-\noindent \textit{Keywords}: Arab Spring, teen pregnancy, women's outcomes, difference-in-differences, Egypt
+\noindent \textit{Keywords}: Arab Spring, teen pregnancy, women's outcomes, difference in differences, Egypt
 \end{abstract}
 
 \newpage
@@ -53,7 +53,8 @@
 
 \subsection{Trends in Teen Pregnancy}
 
-Before presenting the estimation results, Figure~\ref{fig:trends} shows the trends in teen pregnancy rates for the treatment and control groups over the study period. The dashed vertical line marks the onset of the Arab Spring in 2011.
+We begin by documenting the trends in teen pregnancy rates for the treatment and control groups over the study period. Figure~\ref{fig:trends} plots these trends, with the dashed vertical line marking the onset of the Arab Spring in 2011.
+\vspace{0.25cm}
 
 \begin{figure}[H]
 \centering
@@ -72,11 +73,13 @@ Before presenting the estimation results, Figure~\ref{fig:trends} shows the tren
 \label{fig:trends}
 \end{figure}
 
-\noindent Several features of Figure~\ref{fig:trends} are worth noting. First, the pre-2011 trends in teen pregnancy are broadly parallel between the treatment and control groups, supporting the key identifying assumption of the DiD design. Second, after the Arab Spring (2011), the treatment group experiences a steeper decline in teen pregnancy rates relative to the control group, consistent with a causal effect of the uprising. The smoothed trends in panel (b) make this divergence particularly clear.
+\noindent Several features of Figure~\ref{fig:trends} are worth noting. First, the pre 2011 trends in teen pregnancy move broadly in parallel across treatment and control groups, lending support to our key identifying assumption. Second, after 2011, the treatment group experiences a noticeably steeper decline in teen pregnancy relative to the control group, consistent with a causal effect of the uprising. The smoothed trends in panel (b) make this post 2011 divergence especially visible.
+\vspace{0.25cm}
 
 \subsection{Summary Statistics}
 
-Table~\ref{tab:sumstats} presents summary statistics for the key variables used in the analysis. Panel~A reports the full sample, Panel~B compares treatment and control groups, and Panel~C shows means by survey year.
+Table~\ref{tab:sumstats} presents the summary statistics for the key variables used in our analysis. Panel~A reports the full sample, Panel~B compares treatment and control groups, and Panel~C shows means by survey year.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
@@ -110,12 +113,12 @@ Birth order              & 40,571 & 2.602 & 1.699 & 1 & 19 \\
 Religion (Muslim)        & 40,539 & 0.960 & 0.196 & 0 & 1 \\
 Terminated birth         & 38,574 & 0.166 & 0.372 & 0 & 1 \\
 TC\_noborder             & 38,183 & 0.458 & 0.498 & 0 & 1 \\
-Post-2011 (Time dummy)   & 40,571 & 0.277 & 0.447 & 0 & 1 \\
+Post 2011 (Time dummy)   & 40,571 & 0.277 & 0.447 & 0 & 1 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item \textit{Notes}: Data from Egypt DHS 2005, 2008, and 2014. Teen pregnancy is defined as first birth before age 20. Wealth quintile reference category is Richest. Education reference is post-secondary.
+\item \textit{Notes}: Data from Egypt DHS 2005, 2008, and 2014. Teen pregnancy is defined as first birth before age 20. Wealth quintile reference category is Richest. Education reference is postsecondary.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -164,85 +167,75 @@ Respondent age         & \multicolumn{2}{c}{28.479} & \multicolumn{2}{c}{28.370}
 \end{threeparttable}
 \end{table}
 
-\begin{landscape}
 \begin{table}[H]
 \centering
 \begin{threeparttable}
-\caption{Difference-in-Differences Summary Statistics}
+\caption{Difference in Differences Summary Statistics}
 \label{tab:did_sumstats}
-\small
-\begin{tabular}{@{}lccccccccl@{}}
+\footnotesize
+\begin{tabular}{@{}l cc@{\hspace{1.2em}}cc@{\hspace{1.2em}}c@{}}
 \toprule
- & \multicolumn{2}{c}{Pre-Period} & & \multicolumn{2}{c}{Post-Period} & & & \\
-\cmidrule(lr){2-3} \cmidrule(lr){5-6}
- & Control & Treatment & & Control & Treatment & & DiD & \\
-Variable & Mean & Mean & & Mean & Mean & & Estimate & \\
+ & \multicolumn{2}{c}{Pre Period} & \multicolumn{2}{c}{Post Period} & \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Variable & Control & Treatment & Control & Treatment & DiD Estimate \\
 \midrule
-\multicolumn{9}{@{}l}{\textit{Panel A: Outcome Variables}} \\[2pt]
-Teen pregnancy         & 0.350 & 0.380 & & 0.294 & 0.297 & & $-$0.027$^{**}$ & \\
-                       &       &       & &       &       & & ($-$2.521) & \\[3pt]
-Age at first birth     & 21.260 & 21.168 & & 21.744 & 21.993 & & 0.341$^{***}$ & \\
-                       &       &       & &       &       & & (3.744) & \\[3pt]
-Age at first marriage  & 19.613 & 19.584 & & 20.180 & 20.559 & & 0.408$^{***}$ & \\
-                       &       &       & &       &       & & (4.544) & \\[6pt]
-\multicolumn{9}{@{}l}{\textit{Panel B: Education}} \\[2pt]
-No education           & 0.269 & 0.312 & & 0.160 & 0.152 & & $-$0.050$^{***}$ & \\
-                       &       &       & &       &       & & ($-$5.601) & \\[3pt]
-Primary education      & 0.106 & 0.118 & & 0.079 & 0.081 & & $-$0.010 & \\
-                       &       &       & &       &       & & ($-$1.470) & \\[3pt]
-Secondary education    & 0.521 & 0.450 & & 0.604 & 0.578 & & 0.045$^{***}$ & \\
-                       &       &       & &       &       & & (3.956) & \\[6pt]
-\multicolumn{9}{@{}l}{\textit{Panel C: Respondent and Household Characteristics}} \\[2pt]
-Respondent age         & 28.727 & 28.579 & & 27.920 & 28.202 & & 0.430$^{***}$ & \\
-                       &       &       & &       &       & & (3.286) & \\[3pt]
-Respondent works       & 0.135 & 0.166 & & 0.114 & 0.127 & & $-$0.018$^{**}$ & \\
-                       &       &       & &       &       & & ($-$2.289) & \\[3pt]
-Husband age            & 35.700 & 35.407 & & 34.141 & 34.101 & & 0.253 & \\
-                       &       &       & &       &       & & (1.495) & \\[3pt]
-Husband works          & 0.980 & 0.981 & & 0.989 & 0.989 & & $-$0.001 & \\
-                       &       &       & &       &       & & ($-$0.247) & \\[3pt]
-Husband no education   & 0.164 & 0.191 & & 0.117 & 0.121 & & $-$0.022$^{***}$ & \\
-                       &       &       & &       &       & & ($-$2.847) & \\[3pt]
-Birth order            & 2.655 & 2.625 & & 2.481 & 2.426 & & $-$0.025 & \\
-                       &       &       & &       &       & & ($-$0.712) & \\[3pt]
-Religion (Muslim)      & 0.959 & 0.955 & & 0.964 & 0.968 & & 0.008$^{*}$ & \\
-                       &       &       & &       &       & & (1.810) & \\[6pt]
-\multicolumn{9}{@{}l}{\textit{Panel D: Robustness Outcome}} \\[2pt]
-Terminated birth       & 0.156 & 0.155 & & 0.207 & 0.190 & & $-$0.017$^{*}$ & \\
-                       &       &       & &       &       & & ($-$1.817) & \\
+\multicolumn{6}{@{}l}{\textit{Panel A: Outcome Variables}} \\[1pt]
+Teen pregnancy         & 0.350 & 0.380 & 0.294 & 0.297 & $-$0.027$^{**}$ \\
+                       &       &       &       &       & ($-$2.521) \\[2pt]
+Age at first birth     & 21.260 & 21.168 & 21.744 & 21.993 & 0.341$^{***}$ \\
+                       &       &       &       &       & (3.744) \\[2pt]
+Age at first marriage  & 19.613 & 19.584 & 20.180 & 20.559 & 0.408$^{***}$ \\
+                       &       &       &       &       & (4.544) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Panel B: Education}} \\[1pt]
+No education           & 0.269 & 0.312 & 0.160 & 0.152 & $-$0.050$^{***}$ \\
+                       &       &       &       &       & ($-$5.601) \\[2pt]
+Primary education      & 0.106 & 0.118 & 0.079 & 0.081 & $-$0.010 \\
+                       &       &       &       &       & ($-$1.470) \\[2pt]
+Secondary education    & 0.521 & 0.450 & 0.604 & 0.578 & 0.045$^{***}$ \\
+                       &       &       &       &       & (3.956) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Panel C: Respondent and Household Characteristics}} \\[1pt]
+Respondent age         & 28.727 & 28.579 & 27.920 & 28.202 & 0.430$^{***}$ \\
+                       &       &       &       &       & (3.286) \\[2pt]
+Respondent works       & 0.135 & 0.166 & 0.114 & 0.127 & $-$0.018$^{**}$ \\
+                       &       &       &       &       & ($-$2.289) \\[2pt]
+Husband age            & 35.700 & 35.407 & 34.141 & 34.101 & 0.253 \\
+                       &       &       &       &       & (1.495) \\[2pt]
+Husband works          & 0.980 & 0.981 & 0.989 & 0.989 & $-$0.001 \\
+                       &       &       &       &       & ($-$0.247) \\[2pt]
+Husband no education   & 0.164 & 0.191 & 0.117 & 0.121 & $-$0.022$^{***}$ \\
+                       &       &       &       &       & ($-$2.847) \\[2pt]
+Birth order            & 2.655 & 2.625 & 2.481 & 2.426 & $-$0.025 \\
+                       &       &       &       &       & ($-$0.712) \\[2pt]
+Religion (Muslim)      & 0.959 & 0.955 & 0.964 & 0.968 & 0.008$^{*}$ \\
+                       &       &       &       &       & (1.810) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Panel D: Robustness Outcome}} \\[1pt]
+Terminated birth       & 0.156 & 0.155 & 0.207 & 0.190 & $-$0.017$^{*}$ \\
+                       &       &       &       &       & ($-$1.817) \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
-\footnotesize
-\item \textit{Notes}: Pre-period includes DHS 2005 and 2008 waves; post-period is DHS 2014. Treatment and control groups defined by TC\_noborder. The DiD estimate is the coefficient on the interaction term (Treatment $\times$ Post) from a regression of each variable on treatment, post-period, and their interaction, with robust standard errors. $t$-statistics in parentheses. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\scriptsize
+\item \textit{Notes}: Pre period includes DHS 2005 and 2008; post period is DHS 2014. Treatment/control defined by TC\_noborder. DiD estimate is the coefficient on Treatment $\times$ Post with robust standard errors. $t$ statistics in parentheses. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
-\end{landscape}
 
-\noindent Key observations from the summary statistics:
-\begin{itemize}[nosep]
-    \item About 34.3\% of women in the sample experienced teen pregnancy, with an average age at first birth of 21.4 years and first marriage of 19.8 years (Table~\ref{tab:sumstats}).
-    \item The treatment and control groups are broadly balanced on observables, with similar ages, birth orders, and marriage ages, supporting the validity of the DiD design.
-    \item Teen pregnancy rates decline monotonically across survey waves: from 38.8\% in 2005 to 29.6\% in 2014, while age at first marriage increases from 19.3 to 20.3 years.
-    \item Education composition improves over time: the share with no education falls from 33.4\% to 17.1\%, while secondary education rises from 44.8\% to 58.0\%.
-    \item The sample is 96\% Muslim, 27.7\% observed in the post-2011 period, and 45.8\% in the treatment group.
-\end{itemize}
+\noindent Several patterns emerge from the descriptive statistics. About 34.3\% of women in our sample experienced teen pregnancy, with an average age at first birth of 21.4 years and first marriage of 19.8 years (Table~\ref{tab:sumstats}). The treatment and control groups are broadly balanced on observables---ages, birth orders, and marriage ages are similar---supporting the validity of the DiD design. Furthermore, teen pregnancy rates decline monotonically across survey waves, from 38.8\% in 2005 to 29.6\% in 2014, while the age at first marriage rises from 19.3 to 20.3 years. Educational composition also improves steadily: the share with no education falls from 33.4\% to 17.1\%, while secondary education rises from 44.8\% to 58.0\%. The sample is 96\% Muslim, with 27.7\% observed in the post 2011 period and 45.8\% in the treatment group.
+\vspace{0.25cm}
 
-Table~\ref{tab:did_sumstats} presents the unconditional difference-in-differences for each variable. Even before controlling for covariates, the raw DiD estimates show statistically significant effects on the key outcomes: teen pregnancy declines by 2.7 percentage points ($t = -2.52$), age at first birth increases by 0.34 years ($t = 3.74$), and age at first marriage increases by 0.41 years ($t = 4.54$). Importantly, several control variables---such as husband age, husband work status, and birth order---show insignificant DiD estimates, suggesting that these characteristics did not differentially change between treatment and control groups around the Arab Spring. The terminated birth outcome also shows only marginal significance ($t = -1.82$), foreshadowing the robustness results in Section~5.
+Table~\ref{tab:did_sumstats} presents the unconditional difference in differences for each variable. Even without controlling for covariates, the raw DiD estimates show statistically significant effects on key outcomes: teen pregnancy declines by 2.7 percentage points ($t = -2.52$), age at first birth increases by 0.34 years ($t = 3.74$), and age at first marriage increases by 0.41 years ($t = 4.54$). Importantly, several control variables---husband's age, husband's work status, and birth order---show insignificant DiD estimates, suggesting that these characteristics did not differentially change between treatment and control groups around the Arab Spring. The terminated birth outcome also shows only marginal significance ($t = -1.82$), foreshadowing the robustness results in Section~5.
+\vspace{0.25cm}
 
 \subsection{Empirical Framework}
 
-This document summarizes the empirical results from our analysis of how the Arab Spring affected women's outcomes in Egypt. We use three rounds of the Egypt Demographic and Health Survey (DHS): 2005, 2008, and 2014, providing a combined sample of approximately 40,500 women (see Table~\ref{tab:sumstats}).
-
-Our identification strategy relies on a difference-in-differences (DiD) framework that exploits variation in the intensity of Arab Spring exposure across Egyptian governorates. As shown in Figure~\ref{fig:trends}, the pre-treatment trends in teen pregnancy are broadly parallel, supporting the identifying assumption. The key treatment variables are:
+In this paper we use three rounds of the Egypt Demographic and Health Survey (DHS)---2005, 2008, and 2014---providing a combined sample of approximately 40,500 women (see Table~\ref{tab:sumstats}). Our identification strategy relies on a difference in differences framework that exploits variation in the intensity of Arab Spring exposure across Egyptian governorates. As shown in Figure~\ref{fig:trends}, the pretreatment trends in teen pregnancy are broadly parallel, supporting our identifying assumption. The key treatment variables are:
 
 \begin{itemize}[nosep]
     \item \textbf{past\_group}: A measure of exposure to the Arab Spring, capturing whether women in a given governorate experienced the uprising during a critical period.
-    \item \textbf{TC\_noborder}: The DiD estimator, interacting treatment status with the post-period, excluding border governorates to ensure cleaner identification.
+    \item \textbf{TC\_noborder}: The DiD estimator, interacting treatment status with the post period and excluding border governorates to ensure cleaner identification.
 \end{itemize}
 
-\noindent We estimate progressively controlled specifications:
+\noindent We estimate progressively controlled specifications to assess the sensitivity of our treatment effects:
 \begin{enumerate}[nosep]
     \item \textbf{Specification (1)}: Baseline with wealth controls only
     \item \textbf{Specification (2)}: Adding respondent's education and age
@@ -250,26 +243,102 @@ Our identification strategy relies on a difference-in-differences (DiD) framewor
     \item \textbf{Specification (4)}: Adding birth order and religion
     \item \textbf{Specification (5)}: Full model with all controls
 \end{enumerate}
+\vspace{0.25cm}
 
 % ============================================================
 % SECTION 2: MAIN ESTIMATION
 % ============================================================
 \section{Main Estimation Results}
 
-\subsection{Overview of Key Treatment Effects}
+\subsection{Teen Pregnancy: All Specifications}
 
-Table~\ref{tab:key_effects} presents the key treatment effects from the full model (Specification 5) across all outcome variables. The results paint a consistent picture: Arab Spring exposure is associated with a significant reduction in teen pregnancy, delayed marriage and childbearing, and a shift in occupational composition.
+Table~\ref{tab:teen_preg} reports the full specification results for teen pregnancy, our primary outcome variable. The coefficient on \texttt{past\_group} is robustly negative across all five specifications, declining from $-$0.203 in the baseline to $-$0.095 in the full model as controls are progressively added. This attenuation is expected: controlling for education, age, and birth order absorbs some of the treatment effect that operates through these channels.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
 \begin{threeparttable}
-\caption{Key Treatment Effects Across All Outcomes --- Full Model (Specification 5)}
+\caption{Teen Pregnancy: Progressive Specifications}
+\label{tab:teen_preg}
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+ & Baseline & + Respondent & + Husband & + Birth Order & Full Model \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Treatment Variables}} \\[1pt]
+past\_group  & $-$0.203$^{***}$ & $-$0.048$^{***}$ & $-$0.226$^{***}$ & $-$0.099$^{***}$ & $-$0.095$^{***}$ \\
+             & (0.013) & (0.012) & (0.013) & (0.011) & (0.011) \\[2pt]
+TC\_noborder & 0.133$^{***}$ & 0.061$^{***}$ & 0.133$^{***}$ & 0.068$^{***}$ & 0.067$^{***}$ \\
+             & (0.013) & (0.010) & (0.013) & (0.008) & (0.008) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Wealth Controls (ref: Richest)}} \\[1pt]
+Poorest      & 0.335$^{***}$ & 0.143$^{***}$ & 0.258$^{***}$ & 0.032$^{***}$ & 0.033$^{***}$ \\
+             & (0.013) & (0.013) & (0.014) & (0.012) & (0.012) \\[2pt]
+Poorer       & 0.266$^{***}$ & 0.099$^{***}$ & 0.201$^{***}$ & 0.027$^{**}$ & 0.026$^{**}$ \\
+             & (0.013) & (0.013) & (0.014) & (0.011) & (0.011) \\[2pt]
+Middle       & 0.192$^{***}$ & 0.072$^{***}$ & 0.141$^{***}$ & 0.016 & 0.014 \\
+             & (0.012) & (0.012) & (0.012) & (0.010) & (0.010) \\[2pt]
+Richer       & 0.098$^{***}$ & 0.027$^{***}$ & 0.063$^{***}$ & $-$0.004 & $-$0.005 \\
+             & (0.010) & (0.010) & (0.011) & (0.009) & (0.009) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Respondent Characteristics}} \\[1pt]
+Resp.\ work      &  $-$0.050$^{***}$ & 0.005 & $-$0.029$^{***}$ & 0.017$^{**}$ & 0.020$^{***}$ \\
+                  & (0.008) & (0.008) & (0.008) & (0.007) & (0.007) \\[2pt]
+No education     & & 0.336$^{***}$ & & 0.209$^{***}$ & 0.186$^{***}$ \\
+                  & & (0.011) & & (0.010) & (0.012) \\[2pt]
+Primary edu.     & & 0.340$^{***}$ & & 0.226$^{***}$ & 0.203$^{***}$ \\
+                  & & (0.013) & & (0.012) & (0.013) \\[2pt]
+Secondary edu.   & & 0.186$^{***}$ & & 0.121$^{***}$ & 0.105$^{***}$ \\
+                  & & (0.007) & & (0.007) & (0.008) \\[2pt]
+Resp.\ age       & & $-$0.027$^{***}$ & & $-$0.049$^{***}$ & $-$0.054$^{***}$ \\
+                  & & (0.001) & & (0.001) & (0.001) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Husband Characteristics}} \\[1pt]
+Husband work     & & & 0.037 & & 0.014 \\
+                  & & & (0.027) & & (0.023) \\[2pt]
+Husb.\ no edu.   & & & 0.182$^{***}$ & & 0.029$^{**}$ \\
+                  & & & (0.014) & & (0.013) \\[2pt]
+Husb.\ primary   & & & 0.172$^{***}$ & & 0.035$^{***}$ \\
+                  & & & (0.011) & & (0.012) \\[2pt]
+Husb.\ secondary & & & 0.106$^{***}$ & & 0.023$^{***}$ \\
+                  & & & (0.009) & & (0.009) \\[2pt]
+Husband age      & & & 0.006$^{***}$ & & 0.007$^{***}$ \\
+                  & & & (0.001) & & (0.001) \\[4pt]
+\multicolumn{6}{@{}l}{\textit{Other Controls}} \\[1pt]
+Birth order      & & & & 0.158$^{***}$ & 0.153$^{***}$ \\
+                  & & & & (0.002) & (0.002) \\[2pt]
+Religion         & & & & 0.003 & 0.004 \\
+                  & & & & (0.015) & (0.015) \\[2pt]
+Constant         & 0.130$^{***}$ & 0.809$^{***}$ & $-$0.194$^{***}$ & 1.163$^{***}$ & 1.043$^{***}$ \\
+                  & (0.010) & (0.037) & (0.037) & (0.035) & (0.042) \\[3pt]
+\midrule
+Observations     & 38,118 & 38,118 & 37,793 & 38,087 & 37,762 \\
+Adj.\ $R^2$      & 0.195  & 0.253  & 0.212  & 0.395  & 0.401 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\scriptsize
+\item \textit{Notes}: Dependent variable is an indicator for teen pregnancy. Standard errors in parentheses. Reference categories: Richest (wealth), Postsecondary education (respondent and husband). $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The progressive inclusion of controls reveals several important patterns. Moving from Specification~(1) to~(2), the addition of respondent's education and age substantially reduces the treatment effect from $-$0.203 to $-$0.048, indicating that education is a major mediating channel. It is instructive that husband's characteristics alone---Specification~(3)---do not absorb nearly as much of the treatment effect ($-$0.226), which suggests that the Arab Spring operated primarily through women's own human capital rather than through their husbands' attributes. Once birth order is included in Specifications~(4) and~(5), it emerges as a powerful predictor of teen pregnancy (0.153, $p<0.01$), and its inclusion roughly halves the remaining treatment effect. Overall, the adjusted $R^2$ doubles from 0.195 to 0.401, confirming that our full model captures substantial variation in teen pregnancy.
+\vspace{0.25cm}
+
+\subsection{Overview of Key Treatment Effects Across Outcomes}
+
+Table~\ref{tab:key_effects} presents the treatment effects from our full model (Specification~5) across all outcome variables. The results paint a consistent picture: Arab Spring exposure is associated with a significant reduction in teen pregnancy, delayed marriage and childbearing, and a notable shift in occupational composition.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Key Treatment Effects Across All Outcomes: Full Model (Specification 5)}
 \label{tab:key_effects}
 \small
 \begin{tabular}{@{}lcccccc@{}}
 \toprule
  & \multicolumn{1}{c}{Teen} & \multicolumn{1}{c}{Age First} & \multicolumn{1}{c}{Age First} & \multicolumn{1}{c}{Unskilled} & \multicolumn{1}{c}{Skilled} & \multicolumn{1}{c}{Agric.} \\
- & \multicolumn{1}{c}{Pregnancy} & \multicolumn{1}{c}{Birth} & \multicolumn{1}{c}{Marriage} & \multicolumn{1}{c}{Manual} & \multicolumn{1}{c}{Manual} & \multicolumn{1}{c}{Self-Emp.} \\
+ & \multicolumn{1}{c}{Pregnancy} & \multicolumn{1}{c}{Birth} & \multicolumn{1}{c}{Marriage} & \multicolumn{1}{c}{Manual} & \multicolumn{1}{c}{Manual} & \multicolumn{1}{c}{Self Emp.} \\
 \midrule
 past\_group  & $-$0.095$^{***}$ & 1.125$^{***}$ & 0.973$^{***}$ & $-$0.172$^{***}$ & $-$0.015 & $-$0.031 \\
              & (0.011) & (0.069) & (0.076) & (0.013) & (0.031) & (0.025) \\[4pt]
@@ -287,172 +356,8 @@ Adj.\ $R^2$  & 0.401  & 0.696  & 0.632  & 0.379  & 0.181  & 0.367 \\
 \end{threeparttable}
 \end{table}
 
-\noindent \textbf{Key findings from Table~\ref{tab:key_effects}:}
-\begin{itemize}[nosep]
-    \item Arab Spring exposure (\texttt{past\_group}) reduces teen pregnancy by 9.5 percentage points ($p<0.01$), increases age at first birth by 1.13 years, and increases age at first marriage by 0.97 years.
-    \item The DiD estimator (\texttt{TC\_noborder}) shows significant effects in the opposite direction, consistent with differential trends between treatment and control governorates.
-    \item For occupation, exposure significantly reduces unskilled manual labor ($-$17.2 pp), suggesting a shift toward higher-skilled employment.
-    \item Effects on skilled manual labor and agricultural self-employment are largely insignificant for \texttt{past\_group}, though the DiD term shows a significant increase in skilled manual work.
-\end{itemize}
-
-% --- Teen Pregnancy Full Table ---
-\subsection{Teen Pregnancy: All Specifications}
-
-Table~\ref{tab:teen_preg} reports the full specification results for teen pregnancy, our primary outcome variable. The coefficient on \texttt{past\_group} is robust across all five specifications, declining from $-$0.203 in the baseline to $-$0.095 in the full model as controls are progressively added. This attenuation is expected: controlling for education, age, and birth order absorbs some of the treatment effect operating through these channels.
-
-\begin{table}[H]
-\centering
-\begin{threeparttable}
-\caption{Teen Pregnancy --- Progressive Specifications}
-\label{tab:teen_preg}
-\small
-\begin{tabular}{@{}lccccc@{}}
-\toprule
- & (1) & (2) & (3) & (4) & (5) \\
- & Baseline & + Respondent & + Husband & + Birth Order & Full Model \\
-\midrule
-\multicolumn{6}{@{}l}{\textit{Treatment Variables}} \\[2pt]
-past\_group  & $-$0.203$^{***}$ & $-$0.048$^{***}$ & $-$0.226$^{***}$ & $-$0.099$^{***}$ & $-$0.095$^{***}$ \\
-             & (0.013) & (0.012) & (0.013) & (0.011) & (0.011) \\[3pt]
-TC\_noborder & 0.133$^{***}$ & 0.061$^{***}$ & 0.133$^{***}$ & 0.068$^{***}$ & 0.067$^{***}$ \\
-             & (0.013) & (0.010) & (0.013) & (0.008) & (0.008) \\[6pt]
-\multicolumn{6}{@{}l}{\textit{Wealth Controls (ref: Richest)}} \\[2pt]
-Poorest      & 0.335$^{***}$ & 0.143$^{***}$ & 0.258$^{***}$ & 0.032$^{***}$ & 0.033$^{***}$ \\
-             & (0.013) & (0.013) & (0.014) & (0.012) & (0.012) \\[3pt]
-Poorer       & 0.266$^{***}$ & 0.099$^{***}$ & 0.201$^{***}$ & 0.027$^{**}$ & 0.026$^{**}$ \\
-             & (0.013) & (0.013) & (0.014) & (0.011) & (0.011) \\[3pt]
-Middle       & 0.192$^{***}$ & 0.072$^{***}$ & 0.141$^{***}$ & 0.016 & 0.014 \\
-             & (0.012) & (0.012) & (0.012) & (0.010) & (0.010) \\[3pt]
-Richer       & 0.098$^{***}$ & 0.027$^{***}$ & 0.063$^{***}$ & $-$0.004 & $-$0.005 \\
-             & (0.010) & (0.010) & (0.011) & (0.009) & (0.009) \\[6pt]
-\multicolumn{6}{@{}l}{\textit{Respondent Characteristics}} \\[2pt]
-Resp.\ work      &  $-$0.050$^{***}$ & 0.005 & $-$0.029$^{***}$ & 0.017$^{**}$ & 0.020$^{***}$ \\
-                  & (0.008) & (0.008) & (0.008) & (0.007) & (0.007) \\[3pt]
-No education     & & 0.336$^{***}$ & & 0.209$^{***}$ & 0.186$^{***}$ \\
-                  & & (0.011) & & (0.010) & (0.012) \\[3pt]
-Primary edu.     & & 0.340$^{***}$ & & 0.226$^{***}$ & 0.203$^{***}$ \\
-                  & & (0.013) & & (0.012) & (0.013) \\[3pt]
-Secondary edu.   & & 0.186$^{***}$ & & 0.121$^{***}$ & 0.105$^{***}$ \\
-                  & & (0.007) & & (0.007) & (0.008) \\[3pt]
-Resp.\ age       & & $-$0.027$^{***}$ & & $-$0.049$^{***}$ & $-$0.054$^{***}$ \\
-                  & & (0.001) & & (0.001) & (0.001) \\[6pt]
-\multicolumn{6}{@{}l}{\textit{Husband Characteristics}} \\[2pt]
-Husband work     & & & 0.037 & & 0.014 \\
-                  & & & (0.027) & & (0.023) \\[3pt]
-Husb.\ no edu.   & & & 0.182$^{***}$ & & 0.029$^{**}$ \\
-                  & & & (0.014) & & (0.013) \\[3pt]
-Husb.\ primary   & & & 0.172$^{***}$ & & 0.035$^{***}$ \\
-                  & & & (0.011) & & (0.012) \\[3pt]
-Husb.\ secondary & & & 0.106$^{***}$ & & 0.023$^{***}$ \\
-                  & & & (0.009) & & (0.009) \\[3pt]
-Husband age      & & & 0.006$^{***}$ & & 0.007$^{***}$ \\
-                  & & & (0.001) & & (0.001) \\[6pt]
-\multicolumn{6}{@{}l}{\textit{Other Controls}} \\[2pt]
-Birth order      & & & & 0.158$^{***}$ & 0.153$^{***}$ \\
-                  & & & & (0.002) & (0.002) \\[3pt]
-Religion         & & & & 0.003 & 0.004 \\
-                  & & & & (0.015) & (0.015) \\[3pt]
-Constant         & 0.130$^{***}$ & 0.809$^{***}$ & $-$0.194$^{***}$ & 1.163$^{***}$ & 1.043$^{***}$ \\
-                  & (0.010) & (0.037) & (0.037) & (0.035) & (0.042) \\[4pt]
-\midrule
-Observations     & 38,118 & 38,118 & 37,793 & 38,087 & 37,762 \\
-Adj.\ $R^2$      & 0.195  & 0.253  & 0.212  & 0.395  & 0.401 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[flushleft]
-\footnotesize
-\item \textit{Notes}: Dependent variable is an indicator for teen pregnancy. Standard errors in parentheses. Reference categories: Richest (wealth), Post-secondary education (respondent and husband). $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\noindent The progressive inclusion of controls reveals important patterns:
-\begin{itemize}[nosep]
-    \item \textbf{Specifications (1) to (2)}: Adding respondent's education and age substantially reduces the treatment effect from $-$0.203 to $-$0.048, indicating that education is a major channel.
-    \item \textbf{Specification (3)}: Husband's characteristics alone do not absorb as much of the treatment effect ($-$0.226), suggesting that the Arab Spring operated primarily through women's own human capital.
-    \item \textbf{Specifications (4)--(5)}: Birth order is a strong predictor of teen pregnancy (0.153$^{***}$), and its inclusion roughly halves the remaining treatment effect.
-    \item The adjusted $R^2$ doubles from 0.195 to 0.401, indicating that the full model explains substantial variation in teen pregnancy.
-\end{itemize}
-
-% --- Schooling ---
-\subsection{Schooling Outcomes}
-
-Table~\ref{tab:schooling} examines whether Arab Spring exposure affected women's educational attainment. The results suggest limited direct effects of the treatment on education levels, with only a marginally significant positive effect on post-secondary education.
-
-\begin{table}[H]
-\centering
-\begin{threeparttable}
-\caption{Schooling Outcomes --- Full Model}
-\label{tab:schooling}
-\small
-\begin{tabular}{@{}lcccc@{}}
-\toprule
- & (1) & (2) & (3) & (4) \\
- & No Education & Primary & Secondary & Post-Secondary \\
-\midrule
-past\_group  & $-$0.005 & $-$0.001 & $-$0.010 & 0.016$^{*}$ \\
-             & (0.012) & (0.009) & (0.015) & (0.009) \\[3pt]
-TC\_noborder & 0.017 & 0.016$^{**}$ & $-$0.027$^{**}$ & $-$0.006 \\
-             & (0.011) & (0.007) & (0.012) & (0.007) \\[3pt]
-Resp.\ work  & $-$0.023$^{***}$ & $-$0.018$^{***}$ & $-$0.091$^{***}$ & 0.132$^{***}$ \\
-             & (0.007) & (0.006) & (0.013) & (0.010) \\[3pt]
-Husb.\ no edu. & 0.518$^{***}$ & 0.082$^{***}$ & $-$0.123$^{***}$ & $-$0.477$^{***}$ \\
-             & (0.011) & (0.008) & (0.015) & (0.011) \\[3pt]
-Birth order  & 0.040$^{***}$ & 0.013$^{***}$ & $-$0.025$^{***}$ & $-$0.027$^{***}$ \\
-             & (0.002) & (0.002) & (0.003) & (0.001) \\[4pt]
-\midrule
-Observations & 37,762 & 37,762 & 37,762 & 37,762 \\
-Adj.\ $R^2$  & 0.333  & 0.097  & 0.233  & 0.406 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[flushleft]
-\footnotesize
-\item \textit{Notes}: Each column reports a separate regression. Dependent variables are indicators for education level. Additional controls include respondent age, husband's education and age, husband's work status, and religion. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\noindent The lack of strong treatment effects on education is notable. It suggests that the Arab Spring's impact on teen pregnancy did not operate primarily through changes in formal educational attainment, but rather through other channels such as delayed marriage.
-
-% --- Occupation ---
-\subsection{Occupation Outcomes}
-
-Table~\ref{tab:occupation} examines occupational composition. The treatment significantly reduces unskilled manual labor, suggesting that Arab Spring exposure shifted women toward less precarious forms of employment.
-
-\begin{table}[H]
-\centering
-\begin{threeparttable}
-\caption{Occupation Outcomes --- Full Model}
-\label{tab:occupation}
-\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
- & (1) & (2) & (3) \\
- & Unskilled Manual & Skilled Manual & Agric.\ Self-Employed \\
-\midrule
-past\_group  & $-$0.172$^{***}$ & $-$0.015 & $-$0.031 \\
-             & (0.013) & (0.031) & (0.025) \\[3pt]
-TC\_noborder & 0.301$^{***}$ & 0.171$^{***}$ & 0.004 \\
-             & (0.012) & (0.017) & (0.028) \\[3pt]
-Poorest      & 0.015 & 0.013 & 0.252$^{***}$ \\
-             & (0.011) & (0.015) & (0.019) \\[3pt]
-Resp.\ work  & 0.004 & 0.023$^{***}$ & 0.061$^{***}$ \\
-             & (0.005) & (0.008) & (0.008) \\[3pt]
-Resp.\ age   & $-$0.026$^{***}$ & $-$0.001 & $-$0.023$^{***}$ \\
-             & (0.001) & (0.002) & (0.003) \\[3pt]
-Religion     & 0.020$^{*}$ & $-$0.039$^{**}$ & $-$0.086$^{***}$ \\
-             & (0.011) & (0.016) & (0.017) \\[4pt]
-\midrule
-Observations & 37,762 & 37,762 & 37,762 \\
-Adj.\ $R^2$  & 0.379  & 0.181  & 0.367 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}[flushleft]
-\footnotesize
-\item \textit{Notes}: Each column reports a separate regression. Dependent variables are indicators for occupation type. Full set of controls included. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\noindent As shown in Table~\ref{tab:key_effects}, Arab Spring exposure (\texttt{past\_group}) reduces teen pregnancy by 9.5 percentage points ($p<0.01$), raises the age at first birth by 1.13 years, and delays first marriage by 0.97 years. The DiD estimator (\texttt{TC\_noborder}) shows significant effects in the opposite direction, consistent with differential preexisting trends between treatment and control governorates. On the occupational front, exposure significantly reduces participation in unskilled manual labor by 17.2 percentage points, suggesting a shift toward higher skilled employment. However, the effects on skilled manual labor and agricultural self employment are largely insignificant for \texttt{past\_group}, though the DiD term picks up a significant increase in skilled manual work.
+\vspace{0.25cm}
 
 % ============================================================
 % SECTION 3: HETEROGENEITY ANALYSIS
@@ -462,11 +367,12 @@ Adj.\ $R^2$  & 0.379  & 0.181  & 0.367 \\
 \subsection{All Women vs.\ Teen Sample}
 
 A central question is whether the treatment effects differ between the full sample and the teen subsample. Table~\ref{tab:het_comparison} presents this comparison across three key outcome categories.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
 \begin{threeparttable}
-\caption{Heterogeneity: All Women vs.\ Teen Sample --- Treatment Effects}
+\caption{Heterogeneity: All Women vs.\ Teen Sample: Treatment Effects}
 \label{tab:het_comparison}
 \small
 \begin{tabular}{@{}lcccc@{}}
@@ -499,42 +405,31 @@ Outcome / Variable & Coef. & SE & Coef. & SE \\
 \end{threeparttable}
 \end{table}
 
-\noindent Several important patterns emerge:
-
-\begin{enumerate}[nosep]
-    \item \textbf{Age of first marriage}: The treatment effect is large and significant for the full sample (0.97 years, $p<0.01$) but statistically insignificant for teens. This suggests that delayed marriage is primarily a channel for women outside the very young cohort.
-
-    \item \textbf{Unskilled manual labor}: The treatment effect is \textit{larger} in magnitude for teens ($-$0.392) than for all women ($-$0.172), and significant in both samples. Teens appear more responsive to the occupational shifts induced by the Arab Spring.
-
-    \item \textbf{Skilled manual labor}: The effect is marginally significant for teens ($-$0.252, $p<0.10$) but insignificant for the full sample, suggesting that the occupational disruption was particularly concentrated among younger women.
-
-    \item \textbf{Secondary education}: There is a marginally significant positive effect for teens (0.308, $p<0.10$) but not for the full sample, pointing to potential gains in educational attainment specifically for the youngest cohort.
-\end{enumerate}
+\noindent Several striking differences emerge across the two samples. First, the treatment effect on age of first marriage is large and significant for the full sample (0.97 years, $p<0.01$) but statistically insignificant for teens, suggesting that delayed marriage is primarily a channel for women outside the very young cohort. Second, the treatment effect on unskilled manual labor is \textit{more than twice as large} among teens ($-$0.392) compared to all women ($-$0.172), and significant in both samples---teens appear considerably more responsive to the occupational disruptions induced by the uprising. Third, the skilled manual labor effect reaches marginal significance for teens ($-$0.252, $p<0.10$) but not for the full sample, implying that occupational displacement was particularly concentrated among younger women. Finally, our results show a marginally significant positive effect on secondary education for teens (0.308, $p<0.10$) that does not appear in the full sample, pointing to potential gains in educational attainment specifically for the youngest cohort.
+\vspace{0.25cm}
 
 \subsection{Additional Heterogeneity Dimensions}
 
-Beyond the all-women vs.\ teen comparison, the heterogeneity analysis (conducted by Yeganeh) explores several additional dimensions using the teen pregnancy outcome:
+Beyond the all women vs.\ teen comparison, we explore several additional dimensions of heterogeneity using the teen pregnancy outcome. These analyses, conducted by Yeganeh, examine urban vs.\ rural differences (including separate estimations and interactions), age group breakdowns (very early pregnancy below 16, early teen 16--17, and late teen 18--19, with further splits by urban/rural status), wealth quintile--specific estimations that reveal whether treatment effects concentrate among particular socioeconomic groups, and pregnancy timing categories (early, late, and very early).
+\vspace{0.25cm}
 
-\begin{itemize}[nosep]
-    \item \textbf{Urban vs.\ Rural}: Results are available for separate urban and rural estimations, as well as interactions.
-    \item \textbf{Age Groups}: Very early pregnancy ($<$16), early teen (16--17), and late teen (18--19) are examined separately, with further breakdowns by urban/rural status.
-    \item \textbf{Wealth Quintiles}: Separate estimations for each wealth quintile (poorest through richest) reveal whether the treatment effects are concentrated among particular socioeconomic groups.
-    \item \textbf{Pregnancy Timing}: Early, late, and very early pregnancy categories are analyzed to understand differential effects by the timing of pregnancy.
-\end{itemize}
-
-\noindent These results are documented in 21 individual files in the \texttt{Results/hetro\_analysis/Yeganeh/} directory. A comprehensive summary is available in the \texttt{02\_Heterogeneity\_Analysis\_Summary.xlsx} workbook.
+\noindent We document these results across 21 individual files in the \texttt{Results/hetro\_analysis/Yeganeh/} directory, with a comprehensive summary available in the \texttt{02\_Heterogeneity\_Analysis\_Summary.xlsx} workbook.
+\vspace{0.25cm}
 
 % ============================================================
 % SECTION 4: MECHANISM ANALYSIS
 % ============================================================
 \section{Mechanism Analysis: Marriage Timing as a Channel}
 
-A natural question arising from the main results is: through what channel does the Arab Spring affect teen pregnancy? Table~\ref{tab:mechanism} presents the mechanism analysis, which examines marriage age as a mediator.
+A natural question arising from the main results is: through what channels does the Arab Spring affect teen pregnancy? In this section we examine marriage timing as a mediator and then investigate several additional potential mechanisms---spousal age gap, husband's education, and women's labor force participation---to build a more complete picture.
+
+Table~\ref{tab:mechanism} presents the marriage timing mechanism, reporting teen pregnancy specifications alongside the marriage age regression.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
 \begin{threeparttable}
-\caption{Mechanism Analysis --- Teen Pregnancy and Age of First Marriage}
+\caption{Mechanism Analysis: Teen Pregnancy and Age of First Marriage}
 \label{tab:mechanism}
 \small
 \begin{tabular}{@{}lcccccl@{}}
@@ -560,29 +455,301 @@ Adj.\ $R^2$  & 0.195  & 0.253  & 0.212  & 0.395  & 0.401  & 0.632 \\
 \end{threeparttable}
 \end{table}
 
-\noindent \textbf{Interpretation:} The juxtaposition of the teen pregnancy and marriage age results provides evidence for marriage timing as a key mechanism:
+\noindent The juxtaposition of the teen pregnancy and marriage age results provides clear evidence for marriage timing as a key mechanism. Arab Spring exposure simultaneously reduces teen pregnancy by 9.5 percentage points and increases the age of first marriage by approximately one year. The mirror image signs on the treatment variables across the two outcomes---negative for teen pregnancy, positive for marriage age---are consistent with delayed marriage being the primary channel through which the uprising reduced teen pregnancy. Furthermore, birth order has a strong positive effect on teen pregnancy (0.153, $p<0.01$) and a correspondingly large negative effect on marriage age ($-$1.675, $p<0.01$), reinforcing the tight link between fertility and marriage timing.
+\vspace{0.25cm}
 
-\begin{itemize}[nosep]
-    \item Arab Spring exposure (\texttt{past\_group}) reduces teen pregnancy by 9.5 percentage points and \textit{simultaneously} increases the age of first marriage by approximately 1 year.
-    \item The mirror-image signs on the treatment variables across the two outcomes (negative for teen pregnancy, positive for marriage age) are consistent with delayed marriage being a primary channel through which the Arab Spring reduced teen pregnancy.
-    \item Birth order has a strong positive effect on teen pregnancy (0.153$^{***}$) and a large negative effect on marriage age ($-$1.675$^{***}$), reinforcing the link between fertility timing and marriage timing.
-\end{itemize}
+\subsection{Schooling Outcomes}
 
-\noindent Additionally, the mechanism analysis by Yeganeh examines the role of contraceptive use, including modern vs.\ traditional methods. These analyses are presented as figures in the \texttt{Results/mechanism/Yeganeh/} directory and show changes in contraceptive method composition between treatment and control groups.
-
-% ============================================================
-% SECTION 5: ROBUSTNESS CHECKS
-% ============================================================
-\section{Robustness Checks}
-
-\subsection{Placebo Test: Miscarriage Probability}
-
-To assess whether our findings are driven by changes in pregnancy outcomes rather than genuine behavioral change, we examine miscarriage (terminated birth) probability as a placebo outcome. If the Arab Spring primarily affected pregnancy decisions rather than pregnancy outcomes, we would expect no significant treatment effect on miscarriage rates.
+Table~\ref{tab:schooling} examines whether Arab Spring exposure affected women's educational attainment.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
 \begin{threeparttable}
-\caption{Robustness Check --- Miscarriage Probability (Placebo Test)}
+\caption{Schooling Outcomes: Full Model}
+\label{tab:schooling}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & (1) & (2) & (3) & (4) \\
+ & No Education & Primary & Secondary & Postsecondary \\
+\midrule
+past\_group  & $-$0.005 & $-$0.001 & $-$0.010 & 0.016$^{*}$ \\
+             & (0.012) & (0.009) & (0.015) & (0.009) \\[3pt]
+TC\_noborder & 0.017 & 0.016$^{**}$ & $-$0.027$^{**}$ & $-$0.006 \\
+             & (0.011) & (0.007) & (0.012) & (0.007) \\[3pt]
+Resp.\ work  & $-$0.023$^{***}$ & $-$0.018$^{***}$ & $-$0.091$^{***}$ & 0.132$^{***}$ \\
+             & (0.007) & (0.006) & (0.013) & (0.010) \\[3pt]
+Husb.\ no edu. & 0.518$^{***}$ & 0.082$^{***}$ & $-$0.123$^{***}$ & $-$0.477$^{***}$ \\
+             & (0.011) & (0.008) & (0.015) & (0.011) \\[3pt]
+Birth order  & 0.040$^{***}$ & 0.013$^{***}$ & $-$0.025$^{***}$ & $-$0.027$^{***}$ \\
+             & (0.002) & (0.002) & (0.003) & (0.001) \\[4pt]
+\midrule
+Observations & 37,762 & 37,762 & 37,762 & 37,762 \\
+Adj.\ $R^2$  & 0.333  & 0.097  & 0.233  & 0.406 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Each column reports a separate regression. Dependent variables are indicators for education level. Additional controls include respondent age, husband's education and age, husband's work status, and religion. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The results suggest limited direct effects of the treatment on education levels. The treatment coefficients are uniformly small and statistically insignificant, with only a marginally significant positive effect on postsecondary education. This absence of schooling effects is informative: it implies that the Arab Spring's impact on teen pregnancy did not operate primarily through changes in educational attainment but rather through other channels, most notably delayed marriage.
+\vspace{0.25cm}
+
+\subsection{Occupation Outcomes}
+
+Table~\ref{tab:occupation} examines occupational composition. The treatment significantly reduces unskilled manual labor, suggesting that Arab Spring exposure shifted women away from the most precarious forms of employment.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Occupation Outcomes: Full Model}
+\label{tab:occupation}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & (1) & (2) & (3) \\
+ & Unskilled Manual & Skilled Manual & Agric.\ Self Employed \\
+\midrule
+past\_group  & $-$0.172$^{***}$ & $-$0.015 & $-$0.031 \\
+             & (0.013) & (0.031) & (0.025) \\[3pt]
+TC\_noborder & 0.301$^{***}$ & 0.171$^{***}$ & 0.004 \\
+             & (0.012) & (0.017) & (0.028) \\[3pt]
+Poorest      & 0.015 & 0.013 & 0.252$^{***}$ \\
+             & (0.011) & (0.015) & (0.019) \\[3pt]
+Resp.\ work  & 0.004 & 0.023$^{***}$ & 0.061$^{***}$ \\
+             & (0.005) & (0.008) & (0.008) \\[3pt]
+Resp.\ age   & $-$0.026$^{***}$ & $-$0.001 & $-$0.023$^{***}$ \\
+             & (0.001) & (0.002) & (0.003) \\[3pt]
+Religion     & 0.020$^{*}$ & $-$0.039$^{**}$ & $-$0.086$^{***}$ \\
+             & (0.011) & (0.016) & (0.017) \\[4pt]
+\midrule
+Observations & 37,762 & 37,762 & 37,762 \\
+Adj.\ $R^2$  & 0.379  & 0.181  & 0.367 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Each column reports a separate regression. Dependent variables are indicators for occupation type. Full set of controls included. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Spousal Age Gap}
+
+The Arab Spring may have disrupted traditional marriage markets in ways that altered not just \textit{when} women married but also \textit{whom} they married. To test this, we construct the spousal age gap as $\text{Husband age} - \text{Respondent age}$ (mean $= 6.65$ years, std.\ dev.\ $= 5.57$) and estimate the treatment effect using our full specification, excluding individual ages since they mechanically determine the gap. Table~\ref{tab:mech_agegap} reports these results.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Mechanism: Spousal Age Gap}
+\label{tab:mech_agegap}
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+ & Spousal Age Gap \\
+ & (Husband $-$ Respondent) \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Treatment Variables}} \\[2pt]
+past\_group  & $-$2.017$^{***}$ \\
+             & (0.158) \\[3pt]
+TC\_noborder & 0.646$^{***}$ \\
+             & (0.150) \\[6pt]
+\multicolumn{2}{@{}l}{\textit{Selected Controls}} \\[2pt]
+Poorest      & $-$0.619$^{***}$ \\
+             & (0.196) \\[3pt]
+No education & 1.255$^{***}$ \\
+             & (0.186) \\[3pt]
+Primary edu. & 1.392$^{***}$ \\
+             & (0.204) \\[3pt]
+Secondary edu. & 1.236$^{***}$ \\
+             & (0.138) \\[3pt]
+Resp.\ work  & $-$0.359$^{***}$ \\
+             & (0.123) \\[3pt]
+Birth order  & 0.498$^{***}$ \\
+             & (0.035) \\[4pt]
+\midrule
+Observations & 37,779 \\
+Adj.\ $R^2$  & 0.075 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Dependent variable is the spousal age gap (husband age minus respondent age). Controls include wealth quintiles, respondent's education, employment, husband's education and employment, birth order, and religion. Individual ages excluded since they mechanically determine the outcome. Area unit and birth year fixed effects included; standard errors clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The results reveal a striking finding: Arab Spring exposure reduces the spousal age gap by approximately 2 years ($p<0.01$), representing a 30\% reduction relative to the sample mean of 6.65 years. This suggests that the social upheaval disrupted traditional marriage norms that had long favored large age differences between spouses. The control variables paint a consistent picture: less educated women tend to marry men who are 1.2--1.4 years older than those married by better educated women, while working women have smaller age gaps ($-$0.36 years). These patterns are consistent with the interpretation that the Arab Spring shifted marriage patterns toward more balanced partnerships. Smaller age gaps are associated with more egalitarian household bargaining, which may have contributed to delayed childbearing and reduced teen pregnancy.
+\vspace{0.25cm}
+
+\subsection{Husband's Education: Partner Selection}
+
+If the Arab Spring altered marriage market dynamics, women in treatment areas may have married men with different educational profiles. Table~\ref{tab:mech_husbedu} tests this hypothesis.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Mechanism: Husband's Education (Partner Selection)}
+\label{tab:mech_husbedu}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & Husb.\ No Edu. & Husb.\ Primary & Husb.\ Secondary \\
+\midrule
+past\_group  & $-$0.011 & $-$0.001 & 0.005 \\
+             & (0.010) & (0.010) & (0.015) \\[3pt]
+TC\_noborder & 0.021$^{***}$ & $-$0.000 & $-$0.011 \\
+             & (0.008) & (0.009) & (0.011) \\[4pt]
+\midrule
+Observations & 37,779 & 37,779 & 37,779 \\
+Adj.\ $R^2$  & 0.238 & 0.115 & 0.190 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Each column reports a separate regression. Dependent variables are indicators for husband's education level. Controls include wealth quintiles, respondent's education and age, employment, husband's work status and age, birth order, and religion. Area unit and birth year FE; SEs clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The treatment coefficients on husband's education are uniformly small and statistically insignificant. This null result is informative: it rules out partner education upgrading as a mechanism and implies that the large reduction in the spousal age gap operates independently of any shift in the educational composition of husbands.
+\vspace{0.25cm}
+
+\subsection{Women's Labor Force Participation}
+
+Economic disruption from the Arab Spring may have pushed women into the labor market, raising the opportunity cost of early childbearing. Table~\ref{tab:mech_lfp} tests whether the treatment affected women's employment status.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Mechanism: Women's Labor Force Participation}
+\label{tab:mech_lfp}
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+ & Respondent Works \\
+\midrule
+past\_group  & 0.004 \\
+             & (0.011) \\[3pt]
+TC\_noborder & 0.016$^{**}$ \\
+             & (0.008) \\[6pt]
+\multicolumn{2}{@{}l}{\textit{Selected Controls}} \\[2pt]
+Poorest      & 0.047$^{***}$ \\
+             & (0.012) \\[3pt]
+No education & $-$0.249$^{***}$ \\
+             & (0.014) \\[3pt]
+Secondary edu. & $-$0.221$^{***}$ \\
+             & (0.012) \\[3pt]
+Resp.\ age   & 0.004$^{***}$ \\
+             & (0.001) \\[3pt]
+Husb.\ no edu. & $-$0.039$^{***}$ \\
+             & (0.013) \\[3pt]
+Birth order  & $-$0.006$^{***}$ \\
+             & (0.002) \\[4pt]
+\midrule
+Observations & 37,779 \\
+Adj.\ $R^2$  & 0.133 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Dependent variable is respondent's employment indicator. Controls include wealth quintiles, education, husband's characteristics, birth order, and religion. Area unit and birth year FE; SEs clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The treatment effect on women's employment is small and insignificant ($0.004$, $p > 0.10$), providing no evidence that the Arab Spring operated through changes in labor force participation. The DiD term (\texttt{TC\_noborder}) is marginally significant ($0.016$, $p < 0.05$), indicating some differential trends in employment across treatment and control areas, but this does not translate into a treatment effect through our primary measure of exposure.
+\vspace{0.25cm}
+
+\subsection{Summary of Mechanism Channels}
+
+Table~\ref{tab:mech_summary} consolidates the mechanism results. Of the channels examined, two show strong evidence: \textit{delayed marriage} and \textit{reduced spousal age gap}. In contrast, changes in women's own education, husband's education, and labor force participation do not appear to be operative channels.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Summary of Mechanism Channels: Treatment Effect of past\_group}
+\label{tab:mech_summary}
+\small
+\begin{tabular}{@{}lcccl@{}}
+\toprule
+Mechanism Variable & Coef. & SE & Significant? & Interpretation \\
+\midrule
+Age at first marriage & 0.973 & (0.076) & $^{***}$ & Delayed marriage \\
+Spousal age gap       & $-$2.017 & (0.158) & $^{***}$ & More equal partnerships \\
+Husb.\ no education   & $-$0.011 & (0.010) & No & No partner selection shift \\
+Husb.\ primary edu.   & $-$0.001 & (0.010) & No & No partner selection shift \\
+Husb.\ secondary edu. & 0.005 & (0.015) & No & No partner selection shift \\
+Respondent works      & 0.004 & (0.011) & No & No LFP channel \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: All regressions include area unit and birth year fixed effects, probability weights, and clustered standard errors. Full controls included (see individual tables for details). $^{***}$~$p<0.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent Taken together, the results point to two complementary mechanisms through which the Arab Spring reduced teen pregnancy. First, women in treatment areas married approximately one year later, directly narrowing the window for teen pregnancy. Second, and perhaps more strikingly, the spousal age gap fell by 2 years---a 30\% reduction from the mean---suggesting that the social upheaval broke down traditional patriarchal marriage norms. Marriages between closer in age partners are associated with more egalitarian decision making and greater female agency over reproductive timing.
+\vspace{0.25cm}
+
+Importantly, these effects did \textit{not} operate through changes in women's or husbands' educational attainment, nor through shifts in women's employment. The mechanism appears to be fundamentally about \textit{how} and \textit{when} women married, rather than changes in human capital accumulation or economic activity.
+\vspace{0.25cm}
+
+\subsection{Alternative Explanations}
+
+Two alternative explanations for the observed reduction in teen pregnancy merit consideration: changes in contraceptive behavior and differential pregnancy outcomes (miscarriage). We examine each in turn.
+\vspace{0.25cm}
+
+\noindent \textbf{Contraceptive Use.} If the Arab Spring increased access to or uptake of contraception, this could explain the decline in teen pregnancy independently of the marriage timing channel. Table~\ref{tab:contraceptive} tests this hypothesis by estimating the treatment effect on six contraceptive outcomes: any method, modern methods (pill, IUD, injections, condom, sterilization, implants), traditional methods (periodic abstinence, withdrawal), and three specific modern methods individually.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Alternative Explanation: Contraceptive Use}
+\label{tab:contraceptive}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & Any & Modern & Traditional & Pill & IUD & Injection \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Treatment Variables}} \\[2pt]
+past\_group  & 0.012 & $-$0.005 & 0.000 & 0.006 & 0.016 & $-$0.018$^{***}$ \\
+             & (0.016) & (0.016) & (0.002) & (0.012) & (0.016) & (0.005) \\[3pt]
+TC\_noborder & 0.026$^{*}$ & 0.022 & $-$0.002 & $-$0.010 & 0.008 & 0.019$^{***}$ \\
+             & (0.014) & (0.015) & (0.002) & (0.009) & (0.014) & (0.006) \\[4pt]
+\midrule
+Observations & 37,779 & 37,779 & 37,779 & 37,779 & 37,779 & 37,779 \\
+Adj.\ $R^2$  & 0.099 & 0.108 & 0.043 & 0.065 & 0.095 & 0.097 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Each column reports a separate regression. Dependent variables are binary indicators for contraceptive method use. Modern methods include pill, IUD, injections, condom, sterilization, and implants. Traditional methods include periodic abstinence and withdrawal. Full controls included. Area unit and birth year FE; SEs clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The treatment effect (\texttt{past\_group}) is statistically insignificant for overall contraceptive use, modern methods, traditional methods, pill use, and IUD use. The only significant coefficient appears for injection use ($-$0.018, $p<0.01$), but this effect is negative---indicating a \textit{decline} in injection use among treated women, which runs counter to the hypothesis that increased contraception drove the reduction in teen pregnancy. These results rule out contraceptive uptake as an alternative explanation for our main findings.
+\vspace{0.25cm}
+
+\noindent \textbf{Miscarriage (Placebo Test).} A second alternative explanation is that the Arab Spring affected pregnancy \textit{outcomes} rather than pregnancy \textit{decisions}. To assess this, we examine miscarriage (terminated birth) probability as a placebo outcome. If the uprising primarily affected behavioral decisions about fertility, there should be no significant treatment effect on miscarriage rates.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Alternative Explanation: Miscarriage Probability (Placebo Test)}
 \label{tab:robustness}
 \small
 \begin{tabular}{@{}lcccc@{}}
@@ -611,12 +778,154 @@ Adj.\ $R^2$  & 0.047 &  & 0.161 &  \\
 \end{threeparttable}
 \end{table}
 
-\noindent \textbf{Key finding:} As expected, neither \texttt{past\_group} nor \texttt{TC\_noborder} is statistically significant in the miscarriage regressions, for both the all-women and teen samples. This confirms that:
-\begin{itemize}[nosep]
-    \item The Arab Spring's effects on teen pregnancy reflect genuine changes in fertility behavior, not differential changes in pregnancy termination.
-    \item The low $R^2$ (0.047 for all women) indicates that the model has limited explanatory power for miscarriage, which is largely a stochastic health event---further supporting the placebo interpretation.
-    \item In the teen sample, both treatment coefficients are close to zero and highly insignificant, providing strong evidence for the validity of our main findings.
-\end{itemize}
+\noindent As expected, neither treatment variable is statistically significant in the miscarriage regressions, and this holds for both the all women and teen samples. This result confirms that the main findings reflect genuine changes in fertility behavior rather than differential changes in pregnancy termination. The low $R^2$ (0.047 for all women) is consistent with the expectation that miscarriage is largely a stochastic health event that the model should have limited power to explain---further supporting its use as a placebo outcome. In the teen sample, both treatment coefficients are close to zero and highly insignificant, providing strong evidence for the validity of our main findings.
+\vspace{0.25cm}
+
+% ============================================================
+% SECTION 5: ROBUSTNESS CHECKS
+% ============================================================
+\section{Robustness Checks}
+
+\subsection{Logit Model: Coefficients}
+
+As an additional robustness check, the linear probability model (LPM) results are verified against a nonlinear specification. Since teen pregnancy is a binary outcome, a logit model is estimated with area unit and birth year fixed effects, probability weights, and clustering at the area unit level. Table~\ref{tab:logit} reports the logit coefficients.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Logit Estimates: Teen Pregnancy}
+\label{tab:logit}
+\scriptsize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+ & Baseline & + Respondent & + Husband & + Birth Order & Full Model \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Treatment Variables}} \\
+past\_group  & $-$1.133$^{***}$ & $-$0.285$^{***}$ & $-$1.276$^{***}$ & $-$0.907$^{***}$ & $-$0.887$^{***}$ \\
+             & (0.082) & (0.086) & (0.085) & (0.096) & (0.098) \\[1pt]
+TC\_noborder & 0.749$^{***}$ & 0.379$^{***}$ & 0.768$^{***}$ & 0.509$^{***}$ & 0.505$^{***}$ \\
+             & (0.071) & (0.060) & (0.077) & (0.069) & (0.069) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Wealth Controls (ref: Richest)}} \\
+Poorest      & 2.007$^{***}$ & 0.869$^{***}$ & 1.601$^{***}$ & 0.194$^{**}$ & 0.212$^{**}$ \\
+             & (0.085) & (0.090) & (0.091) & (0.098) & (0.102) \\[1pt]
+Poorer       & 1.676$^{***}$ & 0.657$^{***}$ & 1.327$^{***}$ & 0.210$^{**}$ & 0.214$^{**}$ \\
+             & (0.086) & (0.086) & (0.092) & (0.096) & (0.099) \\[1pt]
+Middle       & 1.294$^{***}$ & 0.530$^{***}$ & 1.017$^{***}$ & 0.174$^{*}$ & 0.170$^{*}$ \\
+             & (0.085) & (0.085) & (0.089) & (0.091) & (0.093) \\[1pt]
+Richer       & 0.752$^{***}$ & 0.263$^{***}$ & 0.543$^{***}$ & 0.071 & 0.049 \\
+             & (0.079) & (0.079) & (0.082) & (0.088) & (0.091) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Respondent Characteristics}} \\
+Resp.\ work  & $-$0.345$^{***}$ & $-$0.024 & $-$0.236$^{***}$ & 0.005 & 0.013 \\
+             & (0.057) & (0.056) & (0.055) & (0.067) & (0.072) \\[1pt]
+No education & & 3.178$^{***}$ & & 2.585$^{***}$ & 2.399$^{***}$ \\
+             & & (0.134) & & (0.144) & (0.153) \\[1pt]
+Primary edu. & & 3.239$^{***}$ & & 2.727$^{***}$ & 2.525$^{***}$ \\
+             & & (0.139) & & (0.146) & (0.152) \\[1pt]
+Secondary edu. & & 2.384$^{***}$ & & 2.047$^{***}$ & 1.905$^{***}$ \\
+             & & (0.128) & & (0.134) & (0.140) \\[1pt]
+Resp.\ age   & & $-$0.170$^{***}$ & & $-$0.446$^{***}$ & $-$0.490$^{***}$ \\
+             & & (0.009) & & (0.012) & (0.014) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Husband Characteristics}} \\
+Husband work & & & 0.188 & & 0.094 \\
+             & & & (0.158) & & (0.191) \\[1pt]
+Husb.\ no edu. & & & 1.228$^{***}$ & & 0.316$^{***}$ \\
+             & & & (0.094) & & (0.112) \\[1pt]
+Husb.\ primary & & & 1.197$^{***}$ & & 0.369$^{***}$ \\
+             & & & (0.082) & & (0.106) \\[1pt]
+Husb.\ secondary & & & 0.849$^{***}$ & & 0.268$^{***}$ \\
+             & & & (0.074) & & (0.089) \\[1pt]
+Husband age  & & & 0.038$^{***}$ & & 0.060$^{***}$ \\
+             & & & (0.004) & & (0.006) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Other Controls}} \\
+Birth order  & & & & 1.453$^{***}$ & 1.424$^{***}$ \\
+             & & & & (0.032) & (0.032) \\[1pt]
+Religion     & & & & 0.036 & 0.045 \\
+             & & & & (0.126) & (0.129) \\[1pt]
+\midrule
+Observations & 37,282 & 37,282 & 36,963 & 37,251 & 36,932 \\
+Pseudo $R^2$ & 0.177 & 0.245 & 0.196 & 0.425 & 0.433 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\scriptsize
+\item \textit{Notes}: Logit coefficients. All specs include area unit and birth year FE. Probability weights; SEs clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Logit Model: Average Marginal Effects}
+
+Table~\ref{tab:mfx} reports the average marginal effects (AMEs) from the logit model to facilitate direct comparison with the LPM estimates in Table~\ref{tab:teen_preg}. The AMEs capture the average change in the probability of teen pregnancy associated with a unit change in each explanatory variable.
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Average Marginal Effects: Teen Pregnancy (Logit)}
+\label{tab:mfx}
+\scriptsize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+ & Baseline & + Respondent & + Husband & + Birth Order & Full Model \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Treatment Variables}} \\
+past\_group  & $-$0.200$^{***}$ & $-$0.046$^{***}$ & $-$0.219$^{***}$ & $-$0.107$^{***}$ & $-$0.103$^{***}$ \\
+             & (0.014) & (0.014) & (0.014) & (0.011) & (0.011) \\[1pt]
+TC\_noborder & 0.132$^{***}$ & 0.061$^{***}$ & 0.132$^{***}$ & 0.060$^{***}$ & 0.059$^{***}$ \\
+             & (0.012) & (0.010) & (0.013) & (0.008) & (0.008) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Wealth Controls (ref: Richest)}} \\
+Poorest      & 0.354$^{***}$ & 0.140$^{***}$ & 0.275$^{***}$ & 0.023$^{*}$ & 0.025$^{**}$ \\
+             & (0.014) & (0.014) & (0.015) & (0.012) & (0.012) \\[1pt]
+Poorer       & 0.296$^{***}$ & 0.106$^{***}$ & 0.228$^{***}$ & 0.025$^{**}$ & 0.025$^{**}$ \\
+             & (0.014) & (0.014) & (0.015) & (0.011) & (0.012) \\[1pt]
+Middle       & 0.229$^{***}$ & 0.085$^{***}$ & 0.175$^{***}$ & 0.021$^{*}$ & 0.020$^{*}$ \\
+             & (0.014) & (0.014) & (0.015) & (0.011) & (0.011) \\[1pt]
+Richer       & 0.133$^{***}$ & 0.042$^{***}$ & 0.093$^{***}$ & 0.008 & 0.006 \\
+             & (0.014) & (0.013) & (0.014) & (0.010) & (0.011) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Respondent Characteristics}} \\
+Resp.\ work  & $-$0.061$^{***}$ & $-$0.004 & $-$0.041$^{***}$ & 0.001 & 0.002 \\
+             & (0.010) & (0.009) & (0.010) & (0.008) & (0.008) \\[1pt]
+No education & & 0.512$^{***}$ & & 0.306$^{***}$ & 0.279$^{***}$ \\
+             & & (0.021) & & (0.017) & (0.018) \\[1pt]
+Primary edu. & & 0.522$^{***}$ & & 0.322$^{***}$ & 0.294$^{***}$ \\
+             & & (0.022) & & (0.017) & (0.018) \\[1pt]
+Secondary edu. & & 0.384$^{***}$ & & 0.242$^{***}$ & 0.222$^{***}$ \\
+             & & (0.020) & & (0.016) & (0.016) \\[1pt]
+Resp.\ age   & & $-$0.027$^{***}$ & & $-$0.053$^{***}$ & $-$0.057$^{***}$ \\
+             & & (0.001) & & (0.001) & (0.001) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Husband Characteristics}} \\
+Husband work & & & 0.032 & & 0.011 \\
+             & & & (0.027) & & (0.022) \\[1pt]
+Husb.\ no edu. & & & 0.211$^{***}$ & & 0.037$^{***}$ \\
+             & & & (0.016) & & (0.013) \\[1pt]
+Husb.\ primary & & & 0.206$^{***}$ & & 0.043$^{***}$ \\
+             & & & (0.014) & & (0.012) \\[1pt]
+Husb.\ secondary & & & 0.146$^{***}$ & & 0.031$^{***}$ \\
+             & & & (0.012) & & (0.010) \\[1pt]
+Husband age  & & & 0.007$^{***}$ & & 0.007$^{***}$ \\
+             & & & (0.001) & & (0.001) \\[2pt]
+\multicolumn{6}{@{}l}{\textit{Other Controls}} \\
+Birth order  & & & & 0.172$^{***}$ & 0.166$^{***}$ \\
+             & & & & (0.002) & (0.002) \\[1pt]
+Religion     & & & & 0.004 & 0.005 \\
+             & & & & (0.015) & (0.015) \\[1pt]
+\midrule
+Observations & 37,282 & 37,282 & 36,963 & 37,251 & 36,932 \\
+Pseudo $R^2$ & 0.177 & 0.245 & 0.196 & 0.425 & 0.433 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\scriptsize
+\item \textit{Notes}: AMEs from logit model. All specs include area unit and birth year FE. Probability weights; SEs clustered at area unit level. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The AMEs are remarkably close to the LPM estimates, confirming that the linear approximation performs well in this setting. In the full model (Specification~5), the AME of $-$0.103 for \texttt{past\_group} from the logit compares closely with $-$0.095 from the LPM---both point to roughly a 10 percentage point reduction in teen pregnancy attributable to Arab Spring exposure. Similarly tight correspondence holds for \texttt{TC\_noborder} (0.059 vs.\ 0.067), and for the coefficients on birth order, education, and respondent age. The pseudo $R^2$ of 0.433 indicates strong model fit, comparable to the LPM's adjusted $R^2$ of 0.401. This consistency across linear and nonlinear specifications strengthens our confidence in the estimated treatment effects.
+\vspace{0.25cm}
 
 % ============================================================
 % SECTION 6: SUMMARY
@@ -624,6 +933,7 @@ Adj.\ $R^2$  & 0.047 &  & 0.161 &  \\
 \section{Summary of Findings and Discussion}
 
 Table~\ref{tab:summary} consolidates the key findings across all analyses.
+\vspace{0.25cm}
 
 \begin{table}[H]
 \centering
@@ -646,31 +956,45 @@ Analysis & Key Result & past\_group & Significant? \\
 \quad Marriage age & Not significant for teens & 0.444 & No \\
 \quad Secondary edu. & Marginal positive effect & 0.308 & $^{*}$ \\[6pt]
 \multicolumn{4}{@{}l}{\textit{Mechanism}} \\[2pt]
-\quad Marriage age & Delayed marriage as channel & 0.973 & $^{***}$ \\[6pt]
-\multicolumn{4}{@{}l}{\textit{Robustness}} \\[2pt]
+\quad Marriage age & Delayed marriage (+1.0 year) & 0.973 & $^{***}$ \\
+\quad Spousal age gap & Reduced by 2.0 years (30\%) & $-$2.017 & $^{***}$ \\
+\quad Husb.\ education & No partner selection shift & --- & No \\
+\quad Women's employment & No LFP channel & 0.004 & No \\
+\quad Schooling & No education channel & --- & No \\
+\quad Occupation & Reduced unskilled labor & $-$0.172 & $^{***}$ \\[6pt]
+\multicolumn{4}{@{}l}{\textit{Alternative Explanations}} \\[2pt]
+\quad Contraceptive use & No treatment effect & 0.012 & No \\
+\quad Modern methods & No treatment effect & $-$0.005 & No \\
 \quad Miscarriage (all) & No effect (placebo passes) & $-$0.013 & No \\
-\quad Miscarriage (teen) & No effect (placebo passes) & $-$0.040 & No \\
+\quad Miscarriage (teen) & No effect (placebo passes) & $-$0.040 & No \\[6pt]
+\multicolumn{4}{@{}l}{\textit{Logit Model (Nonlinear Specification, $N \approx 36{,}932$)}} \\[2pt]
+\quad Teen preg.\ (coefficient) & Large negative log odds & $-$0.887 & $^{***}$ \\
+\quad Teen preg.\ (AME) & Reduced by 10.3 pp & $-$0.103 & $^{***}$ \\
+\quad Pseudo $R^2$ & \multicolumn{3}{l}{0.433 (comparable to LPM Adj.\ $R^2 = 0.401$)} \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \footnotesize
-\item \textit{Notes}: All results from the full model (Specification 5). ``pp'' denotes percentage points. $^{***}$~$p<0.01$, $^{*}$~$p<0.10$.
+\item \textit{Notes}: All results from the full model (Specification 5). ``pp'' denotes percentage points. AME = average marginal effect from logit. $^{***}$~$p<0.01$, $^{*}$~$p<0.10$.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-Our empirical analysis yields several coherent findings:
+The main takeaways from the analysis are as follows.
+\vspace{0.25cm}
 
 \begin{enumerate}
-    \item \textbf{The Arab Spring reduced teen pregnancy.} Exposure to the uprising is associated with a statistically and economically significant 9.5 percentage point reduction in teen pregnancy. This effect is robust across specifications and survives the inclusion of extensive controls.
+    \item \textbf{The Arab Spring reduced teen pregnancy.} Our estimates indicate a statistically and economically significant 9.5 percentage point reduction in teen pregnancy attributable to exposure to the uprising. This effect is robust across specifications and survives the inclusion of a comprehensive set of controls.
 
-    \item \textbf{The primary mechanism is delayed marriage.} Arab Spring exposure increased the age of first marriage by approximately one year. Combined with the finding that schooling effects are largely insignificant, this points to marriage delay---rather than increased education---as the primary channel.
+    \item \textbf{Two primary mechanisms emerge: delayed marriage and changed marriage matching.} The results show that Arab Spring exposure increased the age of first marriage by approximately one year and reduced the spousal age gap by 2 years---a 30\% reduction from the mean of 6.65 years. The narrowing of the age gap suggests that the uprising disrupted traditional marriage norms, leading to more egalitarian partnerships in which women exercised greater agency over reproductive timing. Importantly, these effects did \textit{not} operate through changes in women's or husbands' education, nor through shifts in women's labor force participation. The mechanism appears to be fundamentally about \textit{how} and \textit{when} women married.
 
-    \item \textbf{Occupational composition shifted.} The uprising reduced women's participation in unskilled manual labor by 17.2 percentage points. This effect is even larger among teens ($-$39.2 pp), suggesting that younger women were particularly affected by changes in labor market opportunities.
+    \item \textbf{A significant shift in occupational composition is evident.} The uprising reduced women's participation in unskilled manual labor by 17.2 percentage points, with an even larger effect among teens ($-$39.2 pp). However, overall employment rates did not change, indicating a reallocation across \textit{types} of work rather than a change in the \textit{level} of labor force participation.
 
-    \item \textbf{Heterogeneous effects by age.} The treatment effects are qualitatively different for teens: occupation effects are amplified, marriage age effects disappear, and marginal educational gains emerge. This suggests that the Arab Spring affected younger and older women through distinct channels.
+    \item \textbf{The treatment effects are heterogeneous by age.} The estimates reveal qualitatively different patterns for teens compared with all women: occupational effects are amplified, marriage age effects disappear, and marginal educational gains emerge. These differences suggest that the Arab Spring affected younger and older women through distinct channels.
 
-    \item \textbf{Results are robust.} The miscarriage placebo test confirms that the findings reflect genuine behavioral changes rather than changes in pregnancy outcomes. The treatment has no effect on miscarriage probability in either sample.
+    \item \textbf{The results are robust to nonlinear specification.} A logit model for the binary teen pregnancy outcome yields average marginal effects that closely match the LPM estimates. The logit AME of \texttt{past\_group} is $-$0.103 (vs.\ $-$0.095 in the LPM), and the pseudo $R^2$ of 0.433 is comparable to the LPM adjusted $R^2$ of 0.401. The consistency across linear and nonlinear models reinforces confidence in our results.
+
+    \item \textbf{The placebo test is passed.} Using miscarriage probability as a placebo outcome, no treatment effect is found in either sample, confirming that our findings reflect genuine behavioral changes in fertility decisions rather than differential changes in pregnancy outcomes.
 \end{enumerate}
 
 \vspace{12pt}

@@ -829,6 +829,58 @@ Adj.\ $R^2$  & 0.047 &  & 0.161 &  \\
 \noindent As expected, neither treatment variable is statistically significant in the miscarriage regressions, and this holds for both the all women and teen samples. This result confirms that the main findings reflect genuine changes in fertility behavior rather than differential changes in pregnancy termination. The low $R^2$ (0.047 for all women) is consistent with the expectation that miscarriage is largely a stochastic health event that the model should have limited power to explain---further supporting its use as a placebo outcome. In the teen sample, both treatment coefficients are close to zero and highly insignificant, providing strong evidence for the validity of our main findings.
 \vspace{0.25cm}
 
+
+% ============================================================
+% SECTION 5: Mechanism Analysis: Shifting Gender Norms
+% ============================================================
+\noindent \textbf{Circumcision Opposition.} Table~\ref{tab:circumcision} examines whether exposure to Arab Spring protests affected women's intentions regarding female genital cutting. The dependent variable is an ordered measure of opposition to circumcision (0 = supports, 1 = unsure, 2 = opposes), where higher values indicate greater opposition to the practice.
+
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering
+\begin{threeparttable}
+\caption{Treatment Effect on Opposition to Female Genital Cutting}
+\label{tab:circumcision}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Treatment Variables}} \\[2pt]
+past\_group  & 0.163$^{***}$ & $-$0.045$^{*}$ & 0.087$^{***}$ & $-$0.016 & $-$0.029 \\
+             & (0.033) & (0.027) & (0.028) & (0.027) & (0.027) \\[3pt]
+TC\_noborder & 0.053$^{*}$ & 0.064$^{***}$ & 0.015 & 0.068$^{***}$ & 0.063$^{**}$ \\
+             & (0.032) & (0.024) & (0.027) & (0.025) & (0.025) \\[4pt]
+\midrule
+\multicolumn{6}{@{}l}{\textit{Controls}} \\[2pt]
+Wealth quintiles & & \checkmark & \checkmark & \checkmark & \checkmark \\
+Respondent education & & \checkmark & & \checkmark & \checkmark \\
+Respondent age & & \checkmark & & \checkmark & \checkmark \\
+Own circumcision status & & \checkmark & & & \checkmark \\
+Husband characteristics & & & \checkmark & & \checkmark \\
+Birth order \& Religion & & & & \checkmark & \checkmark \\[4pt]
+\midrule
+Observations & 27,392 & 27,392 & 27,174 & 27,366 & 27,148 \\
+Adj.\ $R^2$  & 0.160 & 0.274 & 0.239 & 0.276 & 0.295 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item \textit{Notes}: Dependent variable is opposition to circumcision on a 0--2 scale (0 = supports, 1 = unsure, 2 = opposes). Column (1) includes treatment variables only. Column (2) adds wealth quintiles, respondent education, age, and own circumcision status. Column (3) adds husband work status and education. Column (4) adds birth order and religion. Column (5) includes all controls. All specifications include area unit and birth year fixed effects; standard errors clustered at area unit level in parentheses. $^{***}$~$p<0.01$, $^{**}$~$p<0.05$, $^{*}$~$p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\noindent The treatment effect is sensitive to model specification. In the basic specification (column 1), \texttt{past\_group} shows a positive and significant effect (0.163, $p<0.01$), suggesting increased opposition to circumcision. However, this effect becomes negative and marginally significant when controlling for socioeconomic characteristics (column 2: $-$0.045, $p<0.10$), positive again when focusing on husband characteristics (column 3: 0.087, $p<0.01$), and negative and insignificant in the fully saturated models (columns 4-5: $-$0.016 and $-$0.029, both $p>0.10$). In contrast, \texttt{TC\_noborder} consistently shows positive and significant effects across most specifications (columns 2, 4-5), suggesting that proximity to trade corridors is robustly associated with greater opposition to circumcision. The inconsistency of the protest exposure effect across specifications indicates that the relationship between Arab Spring exposure and circumcision attitudes is complex and mediated by socioeconomic factors, particularly education, wealth, and the mother's own circumcision status.
+
+\vspace{0.25cm}
+
+
+
+
+
+
 % ============================================================
 % SECTION 5: ROBUSTNESS CHECKS
 % ============================================================

@@ -1,0 +1,343 @@
+*****
+*********
+*******************
+** Create An Extended Version of Combined Dataset
+**** LOAD THE MASTER COMBINED DATASET
+use "Combined_DHS_2005_2008_2014.dta", clear
+
+**** Add some variables for 2005 observations
+* Keep only 2005 rows, merge in selected 2005 variables by caseid
+preserve
+keep if Sample_year == 2005
+merge m:1 caseid using ///
+    "C:\Users\yegan\OneDrive - University of Oklahoma\Egypt\Eg2005\2005.dta", ///
+    keepusing(s801 s802 s811 s817 s818a s818b s818c s818d ///
+              s807_1 s807_2 s807_3 s807_4 s807_5 s807_6 s807_7 ///
+              s809_1 s809_2 s809_3 s809_4 s809_5 s809_6 s809_7 ///
+              v312) ///
+    keep(master match) nogenerate
+
+* Rename variables for consistency across years
+
+rename s801 resp_circumcised
+rename s802 resp_circum_age
+rename s811 intend_circum_daughter
+rename s817 men_want_circum_continue
+rename s818a husband_prefer_circum
+rename s818b circum_prevents_adultery
+rename s818c circum_difficult_childbirth
+rename s818d circum_can_cause_death
+
+* Rename daughter circumcision variables
+rename s807_1 daughter1_circumcised
+rename s807_2 daughter2_circumcised
+rename s807_3 daughter3_circumcised
+rename s807_4 daughter4_circumcised
+rename s807_5 daughter5_circumcised
+rename s807_6 daughter6_circumcised
+rename s807_7 daughter7_circumcised
+
+rename s809_1 daughter1_circum_age
+rename s809_2 daughter2_circum_age
+rename s809_3 daughter3_circum_age
+rename s809_4 daughter4_circum_age
+rename s809_5 daughter5_circum_age
+rename s809_6 daughter6_circum_age
+rename s809_7 daughter7_circum_age
+
+* Rename contraceptive method variable
+rename v312 current_contraceptive
+
+* Label renamed variables
+
+label variable resp_circumcised "Respondent circumcised"
+label variable resp_circum_age "Age at circumcision (respondent)"
+label variable intend_circum_daughter "Intend to have daughter(s) circumcised in future"
+label variable men_want_circum_continue "Thinks that men want circumcision to continue"
+label variable husband_prefer_circum "Husband will prefer his wife to be circumcised"
+label variable circum_prevents_adultery "Circumcision prevents adultery"
+label variable circum_difficult_childbirth "Circumcision makes childbirth more difficult"
+label variable circum_can_cause_death "Circumcision can lead to girl's death"
+
+* Label daughter circumcision variables
+label variable daughter1_circumcised "Daughter 1 circumcised"
+label variable daughter2_circumcised "Daughter 2 circumcised"
+label variable daughter3_circumcised "Daughter 3 circumcised"
+label variable daughter4_circumcised "Daughter 4 circumcised"
+label variable daughter5_circumcised "Daughter 5 circumcised"
+label variable daughter6_circumcised "Daughter 6 circumcised"
+label variable daughter7_circumcised "Daughter 7 circumcised"
+
+label variable daughter1_circum_age "Age of daughter 1 when circumcised"
+label variable daughter2_circum_age "Age of daughter 2 when circumcised"
+label variable daughter3_circum_age "Age of daughter 3 when circumcised"
+label variable daughter4_circum_age "Age of daughter 4 when circumcised"
+label variable daughter5_circum_age "Age of daughter 5 when circumcised"
+label variable daughter6_circum_age "Age of daughter 6 when circumcised"
+label variable daughter7_circum_age "Age of daughter 7 when circumcised"
+
+* Label contraceptive method variable
+label variable current_contraceptive "Current contraceptive method"
+
+* Define value labels for 2005 contraceptive methods
+label define contraceptive_2005 ///
+    0 "Not using" ///
+    1 "Pill" ///
+    2 "IUD" ///
+    3 "Injections" ///
+    4 "Diaphragm" ///
+    5 "Condom" ///
+    6 "Female sterilization" ///
+    7 "Male sterilization" ///
+    8 "Periodic abstinence" ///
+    9 "Withdrawal" ///
+    10 "Other" ///
+    11 "Norplant" ///
+    12 "Abstinence" ///
+    13 "Lactational amenorrhea" ///
+    14 "Female condom" ///
+    15 "Foam or jelly" ///
+    17 "Diaphragm/foam/jelly" ///
+    18 "Prolonged breastfeeding" ///
+    19 "Specific method 3" ///
+    20 "Specific method 4"
+    
+label values current_contraceptive contraceptive_2005
+
+* Save the 2005 merged data temporarily
+tempfile merged_2005
+save `merged_2005', replace
+restore
+
+**** Add some variables for 2008 observations
+preserve
+keep if Sample_year == 2008
+merge m:1 caseid using ///
+    "C:\Users\yegan\OneDrive - University of Oklahoma\Egypt\Eg2008\2008.dta", ///
+    keepusing( s920 s921a s921b s921c s921d g102 g106 g108 g116 ///
+              s909_1 s909_2 s909_3 s909_4 s909_5 s909_6 s909_7 ///
+              s911_1 s911_2 s911_3 s911_4 s911_5 s911_6 s911_7 ///
+              v312) ///
+    keep(master match) nogenerate
+
+* Rename variables for consistency across years
+rename g102 resp_circumcised
+rename g106 resp_circum_age
+rename g108 num_daughters_circumcised
+rename g116 intend_circum_daughter
+rename s920 men_want_circum_continue
+rename s921a husband_prefer_circum
+rename s921b circum_prevents_adultery
+rename s921c circum_difficult_childbirth
+rename s921d circum_can_cause_death
+
+* Rename daughter circumcision variables
+rename s909_1 daughter1_circumcised
+rename s909_2 daughter2_circumcised
+rename s909_3 daughter3_circumcised
+rename s909_4 daughter4_circumcised
+rename s909_5 daughter5_circumcised
+rename s909_6 daughter6_circumcised
+rename s909_7 daughter7_circumcised
+
+rename s911_1 daughter1_circum_age
+rename s911_2 daughter2_circum_age
+rename s911_3 daughter3_circum_age
+rename s911_4 daughter4_circum_age
+rename s911_5 daughter5_circum_age
+rename s911_6 daughter6_circum_age
+rename s911_7 daughter7_circum_age
+
+* Rename contraceptive method variable
+rename v312 current_contraceptive
+
+* Label renamed variables
+label variable resp_circumcised "Respondent circumcised"
+label variable resp_circum_age "Age at circumcision (respondent)"
+label variable num_daughters_circumcised "Number of daughters circumcised"
+label variable intend_circum_daughter "Intend to have daughter(s) circumcised in future"
+label variable men_want_circum_continue "Thinks that men want circumcision to continue"
+label variable husband_prefer_circum "Husband will prefer his wife to be circumcised"
+label variable circum_prevents_adultery "Circumcision prevents adultery"
+label variable circum_difficult_childbirth "Circumcision makes childbirth more difficult"
+label variable circum_can_cause_death "Circumcision can lead to girl's death"
+
+* Label daughter circumcision variables
+label variable daughter1_circumcised "Daughter 1 circumcised"
+label variable daughter2_circumcised "Daughter 2 circumcised"
+label variable daughter3_circumcised "Daughter 3 circumcised"
+label variable daughter4_circumcised "Daughter 4 circumcised"
+label variable daughter5_circumcised "Daughter 5 circumcised"
+label variable daughter6_circumcised "Daughter 6 circumcised"
+label variable daughter7_circumcised "Daughter 7 circumcised"
+
+label variable daughter1_circum_age "Age of daughter 1 when circumcised"
+label variable daughter2_circum_age "Age of daughter 2 when circumcised"
+label variable daughter3_circum_age "Age of daughter 3 when circumcised"
+label variable daughter4_circum_age "Age of daughter 4 when circumcised"
+label variable daughter5_circum_age "Age of daughter 5 when circumcised"
+label variable daughter6_circum_age "Age of daughter 6 when circumcised"
+label variable daughter7_circum_age "Age of daughter 7 when circumcised"
+
+* Label contraceptive method variable
+label variable current_contraceptive "Current contraceptive method"
+
+* Define value labels for 2008 contraceptive methods
+label define contraceptive_2008 ///
+    0 "Not using" ///
+    1 "Pill" ///
+    2 "IUD" ///
+    3 "Injections" ///
+    5 "Condom" ///
+    6 "Female sterilization" ///
+    8 "Periodic abstinence" ///
+    9 "Withdrawal" ///
+    10 "Other" ///
+    11 "Norplant" ///
+    17 "Diaphragm/foam/jelly" ///
+    18 "Prolonged breastfeeding"
+    
+label values current_contraceptive contraceptive_2008
+
+* Save the 2008 merged data temporarily
+tempfile merged_2008
+save `merged_2008', replace
+restore
+
+**** Add some variables for 2014 observations
+preserve
+keep if Sample_year == 2014
+merge m:1 caseid using ///
+    "C:\Users\yegan\OneDrive - University of Oklahoma\Egypt\Eg2014\2014.dta", ///
+    keepusing(s920 s921a s921b s921c s921d g102 g106 g116 ///
+              g121_01 g121_02 g121_03 g121_04 g121_05 g121_06 g121_07 g121_08 ///
+              g121_09 g121_10 g121_11 g121_12 g121_13 g121_14 g121_15 g121_16 ///
+              g121_17 g121_18 g121_19 g121_20 ///
+              g122_01 g122_02 g122_03 g122_04 g122_05 g122_06 g122_07 g122_08 ///
+              g122_09 g122_10 g122_11 g122_12 g122_13 g122_14 g122_15 g122_16 ///
+              g122_17 g122_18 g122_19 g122_20 ///
+              v312) ///
+    keep(master match) nogenerate
+
+* Rename variables for consistency across years
+
+rename g102 resp_circumcised
+rename g106 resp_circum_age
+rename g116 intend_circum_daughter
+rename s920 men_want_circum_continue
+rename s921a husband_prefer_circum
+rename s921b circum_prevents_adultery
+rename s921c circum_difficult_childbirth
+rename s921d circum_can_cause_death
+
+* Rename daughter circumcision variables (g121 series)
+rename g121_01 daughter1_circumcised
+rename g121_02 daughter2_circumcised
+rename g121_03 daughter3_circumcised
+rename g121_04 daughter4_circumcised
+rename g121_05 daughter5_circumcised
+rename g121_06 daughter6_circumcised
+rename g121_07 daughter7_circumcised
+rename g121_08 daughter8_circumcised
+rename g121_09 daughter9_circumcised
+rename g121_10 daughter10_circumcised
+rename g121_11 daughter11_circumcised
+rename g121_12 daughter12_circumcised
+rename g121_13 daughter13_circumcised
+rename g121_14 daughter14_circumcised
+rename g121_15 daughter15_circumcised
+rename g121_16 daughter16_circumcised
+rename g121_17 daughter17_circumcised
+rename g121_18 daughter18_circumcised
+rename g121_19 daughter19_circumcised
+rename g121_20 daughter20_circumcised
+
+* Rename daughter circumcision age variables (g122 series)
+rename g122_01 daughter1_circum_age
+rename g122_02 daughter2_circum_age
+rename g122_03 daughter3_circum_age
+rename g122_04 daughter4_circum_age
+rename g122_05 daughter5_circum_age
+rename g122_06 daughter6_circum_age
+rename g122_07 daughter7_circum_age
+rename g122_08 daughter8_circum_age
+rename g122_09 daughter9_circum_age
+rename g122_10 daughter10_circum_age
+rename g122_11 daughter11_circum_age
+rename g122_12 daughter12_circum_age
+rename g122_13 daughter13_circum_age
+rename g122_14 daughter14_circum_age
+rename g122_15 daughter15_circum_age
+rename g122_16 daughter16_circum_age
+rename g122_17 daughter17_circum_age
+rename g122_18 daughter18_circum_age
+rename g122_19 daughter19_circum_age
+rename g122_20 daughter20_circum_age
+
+* Rename contraceptive method variable
+rename v312 current_contraceptive
+
+* Label renamed variables
+label variable resp_circumcised "Respondent circumcised"
+label variable resp_circum_age "Age at circumcision (respondent)"
+label variable intend_circum_daughter "Intends to have daughter(s) circumcised in future"
+label variable men_want_circum_continue "Thinks that men wants circumcision to continue or end"
+label variable husband_prefer_circum "Husband will prefer his wife to be circumcised"
+label variable circum_prevents_adultery "Circumcision prevents adultery"
+label variable circum_difficult_childbirth "Circumcision makes childbirth more difficult"
+label variable circum_can_cause_death "Circumcision can lead to girl's death"
+
+* Label daughter circumcision variables
+forvalues i = 1/20 {
+    label variable daughter`i'_circumcised "Daughter `i' circumcised"
+    label variable daughter`i'_circum_age "Age of daughter `i' when circumcised"
+}
+
+* Label contraceptive method variable
+label variable current_contraceptive "Current contraceptive method"
+
+* Define value labels for 2014 contraceptive methods
+label define contraceptive_2014 ///
+    0 "Not using" ///
+    1 "Pill" ///
+    2 "IUD" ///
+    4 "Diaphragm/Foam/Jelly" ///
+    5 "Condom" ///
+    6 "Female sterilization" ///
+    8 "Periodic abstinence" ///
+    9 "Withdrawal" ///
+    10 "Other" ///
+    11 "Implants/Norplant" ///
+    18 "Injection (3 monthly)" ///
+    19 "Injection (monthly)" ///
+    20 "Prolonged breastfeeding"
+    
+label values current_contraceptive contraceptive_2014
+
+* Save the 2014 merged data temporarily
+tempfile merged_2014
+save `merged_2014', replace
+restore
+
+**** Combine all years back together
+use `merged_2005', clear
+append using `merged_2008'
+append using `merged_2014'
+
+* Sort by year and caseid
+sort Sample_year caseid
+
+* Save the final combined dataset
+save "Combined_DHS_2005_2008_2014_extended.dta", replace
+
+* Verify the merge and renamed variables
+tab Sample_year, missing
+by Sample_year: summarize resp_circumcised resp_circum_age
+by Sample_year: summarize intend_circum_daughter 
+
+* Check daughter circumcision variables
+by Sample_year: tab daughter1_circumcised, missing
+by Sample_year: summarize daughter1_circum_age daughter2_circum_age daughter3_circum_age
+
+* Check contraceptive method distribution
+tab current_contraceptive Sample_year, missing row	
